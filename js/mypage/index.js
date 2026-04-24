@@ -61,7 +61,7 @@ export function renderMyPage(container, params = {}) {
     <div style="padding:16px 16px 100px;max-width:480px;margin:0 auto;">
       <div style="margin-bottom:20px;">
         <h1 style="color:#fff;font-size:20px;font-weight:700;margin:0 0 4px;">マイページ</h1>
-        <p style="color:#8892a4;font-size:13px;margin:0;">${escapeHtml(staff.name)}さん</p>
+        <p style="color:#5a6272;font-size:13px;margin:0;">${escapeHtml(staff.name)}さん</p>
       </div>
       <div id="mypageSections"></div>
     </div>
@@ -82,13 +82,13 @@ function renderSectionCards(container, staff) {
   ];
 
   container.innerHTML = cards.map(c => `
-    <div class="mypage-card" data-section="${c.id}" style="background:#16213e;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;border:1px solid #2a3a5c;transition:all 0.2s;display:flex;align-items:center;gap:14px;">
-      <div style="font-size:28px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#0f0f1a;border-radius:10px;flex-shrink:0;">${c.icon}</div>
+    <div class="mypage-card" data-section="${c.id}" style="background:#ffffff;border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;border:1px solid #dde0e6;transition:all 0.2s;display:flex;align-items:center;gap:14px;">
+      <div style="font-size:28px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:#F8F5EE;border-radius:10px;flex-shrink:0;">${c.icon}</div>
       <div style="flex:1;min-width:0;">
         <div style="color:#fff;font-size:15px;font-weight:600;">${c.title}</div>
-        <div style="color:#8892a4;font-size:12px;margin-top:2px;">${c.desc}</div>
+        <div style="color:#5a6272;font-size:12px;margin-top:2px;">${c.desc}</div>
       </div>
-      <div style="color:#8892a4;font-size:18px;">›</div>
+      <div style="color:#5a6272;font-size:18px;">›</div>
     </div>
   `).join('');
 
@@ -105,7 +105,7 @@ function renderSectionCards(container, staff) {
 function openSection(container, staff, sectionId) {
   const backBar = `
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-      <button class="mypage-back" style="background:none;border:none;color:#e67e22;font-size:14px;cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px;">
+      <button class="mypage-back" style="background:none;border:none;color:#C5A258;font-size:14px;cursor:pointer;padding:4px 0;display:flex;align-items:center;gap:4px;">
         ← 戻る
       </button>
     </div>
@@ -150,8 +150,8 @@ async function renderAttendanceSection(container, staff, backBar) {
   if (!attendance?.clock_in) {
     // 未出勤
     html += `
-      <div style="text-align:center;margin-bottom:12px;color:#8892a4;font-size:13px;">未出勤</div>
-      <button id="btnClockIn" style="width:100%;padding:20px;border-radius:16px;border:none;font-size:20px;font-weight:700;color:#fff;cursor:pointer;background:linear-gradient(135deg,#e67e22,#f39c12);box-shadow:0 4px 20px rgba(230,126,34,0.4);transition:all 0.2s;">
+      <div style="text-align:center;margin-bottom:12px;color:#5a6272;font-size:13px;">未出勤</div>
+      <button id="btnClockIn" style="width:100%;padding:20px;border-radius:16px;border:none;font-size:20px;font-weight:700;color:#fff;cursor:pointer;background:linear-gradient(135deg,#C5A258,#f39c12);box-shadow:0 4px 20px rgba(230,126,34,0.4);transition:all 0.2s;">
         出勤
       </button>
     `;
@@ -161,7 +161,7 @@ async function renderAttendanceSection(container, staff, backBar) {
       <div style="text-align:center;margin-bottom:8px;">
         <span style="display:inline-block;padding:4px 12px;border-radius:20px;background:#27ae6030;color:#2ecc71;font-size:13px;font-weight:600;">出勤中</span>
       </div>
-      <div style="text-align:center;margin-bottom:12px;color:#8892a4;font-size:13px;">
+      <div style="text-align:center;margin-bottom:12px;color:#5a6272;font-size:13px;">
         ${timeFromISO(attendance.clock_in)} から勤務中
       </div>
       <button id="btnClockOut" style="width:100%;padding:20px;border-radius:16px;border:none;font-size:20px;font-weight:700;color:#fff;cursor:pointer;background:linear-gradient(135deg,#27ae60,#2ecc71);box-shadow:0 4px 20px rgba(39,174,96,0.4);transition:all 0.2s;">
@@ -171,12 +171,12 @@ async function renderAttendanceSection(container, staff, backBar) {
   } else {
     // 完了
     html += `
-      <div style="text-align:center;padding:16px;background:#16213e;border-radius:12px;border:1px solid #2a3a5c;">
+      <div style="text-align:center;padding:16px;background:#ffffff;border-radius:12px;border:1px solid #dde0e6;">
         <div style="color:#2ecc71;font-size:14px;font-weight:600;margin-bottom:8px;">本日の勤務完了</div>
-        <div style="color:#e0e0e0;font-size:13px;">
+        <div style="color:#1C2541;font-size:13px;">
           ${timeFromISO(attendance.clock_in)} 〜 ${timeFromISO(attendance.clock_out)}
         </div>
-        <div style="color:#8892a4;font-size:12px;margin-top:4px;">
+        <div style="color:#5a6272;font-size:12px;margin-top:4px;">
           勤務時間: ${formatDuration(attendance.work_minutes || 0)}
           ${attendance.break_minutes ? `（休憩: ${attendance.break_minutes}分）` : ''}
         </div>
@@ -188,11 +188,11 @@ async function renderAttendanceSection(container, staff, backBar) {
   // --- 休憩時間入力 (出勤中のみ) ---
   if (isClockedIn) {
     html += `
-      <div style="background:#16213e;border-radius:12px;padding:14px;margin-bottom:16px;border:1px solid #2a3a5c;">
-        <label style="color:#8892a4;font-size:12px;display:block;margin-bottom:6px;">休憩時間（分）</label>
+      <div style="background:#ffffff;border-radius:12px;padding:14px;margin-bottom:16px;border:1px solid #dde0e6;">
+        <label style="color:#5a6272;font-size:12px;display:block;margin-bottom:6px;">休憩時間（分）</label>
         <div style="display:flex;gap:8px;align-items:center;">
-          <input id="breakMinutes" type="number" value="${attendance.break_minutes || 0}" min="0" step="15" style="flex:1;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;padding:10px;color:#e0e0e0;font-size:15px;" />
-          <button id="btnSaveBreak" style="background:#2a3a5c;border:none;border-radius:8px;padding:10px 16px;color:#e0e0e0;font-size:13px;cursor:pointer;">保存</button>
+          <input id="breakMinutes" type="number" value="${attendance.break_minutes || 0}" min="0" step="15" style="flex:1;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;padding:10px;color:#1C2541;font-size:15px;" />
+          <button id="btnSaveBreak" style="background:#dde0e6;border:none;border-radius:8px;padding:10px 16px;color:#1C2541;font-size:13px;cursor:pointer;">保存</button>
         </div>
       </div>
     `;
@@ -298,7 +298,7 @@ async function renderKitaseProxy(today) {
 
   if (!kitaseAttendance?.clock_in) {
     inner = `
-      <button id="btnKitaseIn" style="width:100%;padding:14px;border-radius:12px;border:none;font-size:16px;font-weight:600;color:#fff;cursor:pointer;background:linear-gradient(135deg,#e67e22,#f39c12);box-shadow:0 2px 12px rgba(230,126,34,0.3);">
+      <button id="btnKitaseIn" style="width:100%;padding:14px;border-radius:12px;border:none;font-size:16px;font-weight:600;color:#fff;cursor:pointer;background:linear-gradient(135deg,#C5A258,#f39c12);box-shadow:0 2px 12px rgba(230,126,34,0.3);">
         北瀬さん 出勤（代理）
       </button>
     `;
@@ -306,8 +306,8 @@ async function renderKitaseProxy(today) {
     inner = `
       <div style="color:#2ecc71;font-size:13px;margin-bottom:8px;">出勤中: ${timeFromISO(kitaseAttendance.clock_in)}〜</div>
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;">
-        <label style="color:#8892a4;font-size:12px;white-space:nowrap;">休憩（分）:</label>
-        <input id="kitaseBreak" type="number" value="${kitaseAttendance.break_minutes || 0}" min="0" step="15" style="flex:1;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;padding:8px;color:#e0e0e0;font-size:14px;" />
+        <label style="color:#5a6272;font-size:12px;white-space:nowrap;">休憩（分）:</label>
+        <input id="kitaseBreak" type="number" value="${kitaseAttendance.break_minutes || 0}" min="0" step="15" style="flex:1;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;padding:8px;color:#1C2541;font-size:14px;" />
       </div>
       <button id="btnKitaseOut" style="width:100%;padding:14px;border-radius:12px;border:none;font-size:16px;font-weight:600;color:#fff;cursor:pointer;background:linear-gradient(135deg,#27ae60,#2ecc71);">
         北瀬さん 退勤（代理）
@@ -315,7 +315,7 @@ async function renderKitaseProxy(today) {
     `;
   } else {
     inner = `
-      <div style="color:#8892a4;font-size:13px;">
+      <div style="color:#5a6272;font-size:13px;">
         ${timeFromISO(kitaseAttendance.clock_in)} 〜 ${timeFromISO(kitaseAttendance.clock_out)}
         ／ ${formatDuration(kitaseAttendance.work_minutes || 0)}
       </div>
@@ -323,8 +323,8 @@ async function renderKitaseProxy(today) {
   }
 
   return `
-    <div style="background:#1a1a2e;border-radius:12px;padding:14px;margin-bottom:16px;border:1px solid #e67e2240;">
-      <div style="color:#e67e22;font-size:13px;font-weight:600;margin-bottom:10px;">北瀬さんの代理入力</div>
+    <div style="background:#1a1a2e;border-radius:12px;padding:14px;margin-bottom:16px;border:1px solid #C5A25840;">
+      <div style="color:#C5A258;font-size:13px;font-weight:600;margin-bottom:10px;">北瀬さんの代理入力</div>
       ${inner}
     </div>
   `;
@@ -400,15 +400,15 @@ async function loadAttendanceHistory(historyContainer, staffId) {
     const isToday = dateStr === todayStr();
 
     rows += `
-      <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #2a3a5c20;gap:8px;">
-        <div style="width:80px;color:${isToday ? '#e67e22' : '#e0e0e0'};font-size:13px;font-weight:${isToday ? '600' : '400'};">${dayLabel}</div>
-        <div style="flex:1;color:#8892a4;font-size:13px;">${clockIn} 〜 ${clockOut}</div>
-        <div style="color:#e0e0e0;font-size:13px;font-weight:500;min-width:60px;text-align:right;">${duration}</div>
+      <div style="display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #dde0e620;gap:8px;">
+        <div style="width:80px;color:${isToday ? '#C5A258' : '#1C2541'};font-size:13px;font-weight:${isToday ? '600' : '400'};">${dayLabel}</div>
+        <div style="flex:1;color:#5a6272;font-size:13px;">${clockIn} 〜 ${clockOut}</div>
+        <div style="color:#1C2541;font-size:13px;font-weight:500;min-width:60px;text-align:right;">${duration}</div>
       </div>
     `;
   }
 
-  historyContainer.innerHTML = rows || `<div style="color:#8892a4;font-size:13px;text-align:center;padding:16px;">データなし</div>`;
+  historyContainer.innerHTML = rows || `<div style="color:#5a6272;font-size:13px;text-align:center;padding:16px;">データなし</div>`;
 }
 
 // =============================================
@@ -425,7 +425,7 @@ async function renderExpensesSection(container, staff, backBar) {
   const expenses = await getExpenses({ recorded_by: staff.id, limit: 20 });
 
   let html = `
-    <button id="btnAddExpense" style="width:100%;padding:14px;border-radius:12px;border:2px dashed #2a3a5c;background:transparent;color:#e67e22;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:16px;transition:all 0.2s;">
+    <button id="btnAddExpense" style="width:100%;padding:14px;border-radius:12px;border:2px dashed #dde0e6;background:transparent;color:#C5A258;font-size:15px;font-weight:600;cursor:pointer;margin-bottom:16px;transition:all 0.2s;">
       + 経費を追加
     </button>
     <div style="color:#fff;font-size:15px;font-weight:600;margin-bottom:12px;">最近の経費</div>
@@ -441,20 +441,20 @@ async function renderExpensesSection(container, staff, backBar) {
   } else {
     listEl.innerHTML = expenses.map(exp => {
       const catColors = {
-        '材料費': '#3498db', '交通費': '#27ae60', '廃棄費': '#e74c3c',
-        '食費': '#f39c12', '道具': '#9b59b6', 'その他': '#8892a4',
+        '材料費': '#3498db', '交通費': '#27ae60', '廃棄費': '#CE2029',
+        '食費': '#f39c12', '道具': '#9b59b6', 'その他': '#5a6272',
       };
-      const catColor = catColors[exp.category] || '#8892a4';
+      const catColor = catColors[exp.category] || '#5a6272';
       return `
-        <div style="background:#16213e;border-radius:10px;padding:12px;margin-bottom:8px;border:1px solid #2a3a5c;">
+        <div style="background:#ffffff;border-radius:10px;padding:12px;margin-bottom:8px;border:1px solid #dde0e6;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
             <div style="display:flex;align-items:center;gap:8px;">
               <span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;background:${catColor}20;color:${catColor};border:1px solid ${catColor}40;">${escapeHtml(exp.category)}</span>
-              <span style="color:#e0e0e0;font-size:15px;font-weight:600;">${formatPrice(exp.amount)}</span>
+              <span style="color:#1C2541;font-size:15px;font-weight:600;">${formatPrice(exp.amount)}</span>
             </div>
-            <span style="color:#8892a4;font-size:12px;">${formatDate(exp.expense_date || exp.created_at)}</span>
+            <span style="color:#5a6272;font-size:12px;">${formatDate(exp.expense_date || exp.created_at)}</span>
           </div>
-          ${exp.description ? `<div style="color:#8892a4;font-size:12px;">${escapeHtml(exp.description)}</div>` : ''}
+          ${exp.description ? `<div style="color:#5a6272;font-size:12px;">${escapeHtml(exp.description)}</div>` : ''}
         </div>
       `;
     }).join('');
@@ -476,43 +476,43 @@ async function openExpenseForm(container, staff, backBar) {
   const categories = CONFIG.EXPENSE_CATEGORIES;
 
   const formHtml = `
-    <div style="background:#16213e;border-radius:12px;padding:16px;border:1px solid #2a3a5c;">
+    <div style="background:#ffffff;border-radius:12px;padding:16px;border:1px solid #dde0e6;">
       <div style="color:#fff;font-size:15px;font-weight:600;margin-bottom:14px;">経費を追加</div>
 
       <div style="margin-bottom:12px;">
-        <label style="color:#8892a4;font-size:12px;display:block;margin-bottom:4px;">金額 *</label>
-        <input id="expAmount" type="number" placeholder="0" min="0" style="width:100%;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;padding:12px;color:#e0e0e0;font-size:18px;font-weight:600;box-sizing:border-box;" />
+        <label style="color:#5a6272;font-size:12px;display:block;margin-bottom:4px;">金額 *</label>
+        <input id="expAmount" type="number" placeholder="0" min="0" style="width:100%;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;padding:12px;color:#1C2541;font-size:18px;font-weight:600;box-sizing:border-box;" />
       </div>
 
       <div style="margin-bottom:12px;">
-        <label style="color:#8892a4;font-size:12px;display:block;margin-bottom:4px;">カテゴリ *</label>
-        <select id="expCategory" style="width:100%;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;padding:12px;color:#e0e0e0;font-size:14px;box-sizing:border-box;">
+        <label style="color:#5a6272;font-size:12px;display:block;margin-bottom:4px;">カテゴリ *</label>
+        <select id="expCategory" style="width:100%;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;padding:12px;color:#1C2541;font-size:14px;box-sizing:border-box;">
           ${categories.map(c => `<option value="${c}">${c}</option>`).join('')}
         </select>
       </div>
 
       <div style="margin-bottom:12px;">
-        <label style="color:#8892a4;font-size:12px;display:block;margin-bottom:4px;">内容</label>
-        <input id="expDescription" type="text" placeholder="メモ（任意）" style="width:100%;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;padding:12px;color:#e0e0e0;font-size:14px;box-sizing:border-box;" />
+        <label style="color:#5a6272;font-size:12px;display:block;margin-bottom:4px;">内容</label>
+        <input id="expDescription" type="text" placeholder="メモ（任意）" style="width:100%;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;padding:12px;color:#1C2541;font-size:14px;box-sizing:border-box;" />
       </div>
 
       <div style="margin-bottom:14px;">
-        <label style="color:#8892a4;font-size:12px;display:block;margin-bottom:4px;">レシート写真（OCR対応）</label>
+        <label style="color:#5a6272;font-size:12px;display:block;margin-bottom:4px;">レシート写真（OCR対応）</label>
         <div style="display:flex;gap:8px;">
-          <label id="receiptLabel" style="flex:1;padding:12px;border-radius:8px;border:2px dashed #2a3a5c;text-align:center;cursor:pointer;color:#8892a4;font-size:13px;transition:all 0.2s;">
+          <label id="receiptLabel" style="flex:1;padding:12px;border-radius:8px;border:2px dashed #dde0e6;text-align:center;cursor:pointer;color:#5a6272;font-size:13px;transition:all 0.2s;">
             📷 写真を選択
             <input id="expReceipt" type="file" accept="image/*" capture="environment" style="display:none;" />
           </label>
         </div>
-        <div id="ocrStatus" style="margin-top:6px;font-size:12px;color:#8892a4;display:none;"></div>
+        <div id="ocrStatus" style="margin-top:6px;font-size:12px;color:#5a6272;display:none;"></div>
         <div id="receiptPreview" style="margin-top:8px;display:none;">
-          <img id="receiptImg" style="max-width:100%;border-radius:8px;border:1px solid #2a3a5c;" />
+          <img id="receiptImg" style="max-width:100%;border-radius:8px;border:1px solid #dde0e6;" />
         </div>
       </div>
 
       <div style="display:flex;gap:8px;">
-        <button id="btnExpCancel" style="flex:1;padding:12px;border-radius:8px;background:#2a3a5c;color:#8892a4;border:none;font-size:14px;cursor:pointer;">キャンセル</button>
-        <button id="btnExpSave" style="flex:1;padding:12px;border-radius:8px;background:#e67e22;color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;">保存</button>
+        <button id="btnExpCancel" style="flex:1;padding:12px;border-radius:8px;background:#dde0e6;color:#5a6272;border:none;font-size:14px;cursor:pointer;">キャンセル</button>
+        <button id="btnExpSave" style="flex:1;padding:12px;border-radius:8px;background:#C5A258;color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;">保存</button>
       </div>
     </div>
   `;
@@ -541,7 +541,7 @@ async function openExpenseForm(container, staff, backBar) {
     // OCR実行
     ocrStatus.style.display = 'block';
     ocrStatus.textContent = 'OCR処理中...';
-    ocrStatus.style.color = '#e67e22';
+    ocrStatus.style.color = '#C5A258';
 
     try {
       const base64 = await fileToBase64(file);
@@ -566,12 +566,12 @@ async function openExpenseForm(container, staff, backBar) {
         ocrStatus.style.color = '#2ecc71';
       } else {
         ocrStatus.textContent = 'OCR失敗 - 手動で入力してください';
-        ocrStatus.style.color = '#e74c3c';
+        ocrStatus.style.color = '#CE2029';
       }
     } catch (err) {
       console.error('OCR error:', err);
       ocrStatus.textContent = 'OCR接続エラー - 手動で入力してください';
-      ocrStatus.style.color = '#e74c3c';
+      ocrStatus.style.color = '#CE2029';
     }
   });
 
@@ -627,19 +627,19 @@ function renderMembersSection(container, staff, backBar) {
 
   content.innerHTML = members.map(m => {
     const roleLabel = m.role === 'admin' ? '管理者' : m.role === 'display_only' ? '表示のみ' : '作業員';
-    const roleColor = m.role === 'admin' ? '#e67e22' : m.role === 'display_only' ? '#8892a4' : '#3498db';
+    const roleColor = m.role === 'admin' ? '#C5A258' : m.role === 'display_only' ? '#5a6272' : '#3498db';
     const isKitase = m.id === 'kitase';
 
     return `
-      <div style="background:#16213e;border-radius:12px;padding:14px;margin-bottom:10px;border:1px solid #2a3a5c;display:flex;align-items:center;gap:14px;">
-        <div style="width:48px;height:48px;background:#0f0f1a;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${m.avatar}</div>
+      <div style="background:#ffffff;border-radius:12px;padding:14px;margin-bottom:10px;border:1px solid #dde0e6;display:flex;align-items:center;gap:14px;">
+        <div style="width:48px;height:48px;background:#F8F5EE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${m.avatar}</div>
         <div style="flex:1;min-width:0;">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             <span style="color:#fff;font-size:15px;font-weight:600;">${escapeHtml(m.name)}</span>
             <span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:600;background:${roleColor}20;color:${roleColor};border:1px solid ${roleColor}40;">${roleLabel}</span>
           </div>
           ${isKitase ? '<div style="color:#f39c12;font-size:11px;margin-top:4px;">ガラケーのみ・操作しない</div>' : ''}
-          <div style="color:#8892a4;font-size:11px;margin-top:4px;">連絡先: 今後追加予定</div>
+          <div style="color:#5a6272;font-size:11px;margin-top:4px;">連絡先: 今後追加予定</div>
         </div>
       </div>
     `;
@@ -658,24 +658,24 @@ function renderSettingsSection(container, staff, backBar) {
   const roleLabel = staff.role === 'admin' ? '管理者' : '作業員';
 
   content.innerHTML = `
-    <div style="background:#16213e;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #2a3a5c;">
-      <div style="color:#8892a4;font-size:12px;margin-bottom:8px;">ログイン中のユーザー</div>
+    <div style="background:#ffffff;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #dde0e6;">
+      <div style="color:#5a6272;font-size:12px;margin-bottom:8px;">ログイン中のユーザー</div>
       <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:48px;height:48px;background:#0f0f1a;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">${staff.avatar}</div>
+        <div style="width:48px;height:48px;background:#F8F5EE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">${staff.avatar}</div>
         <div>
           <div style="color:#fff;font-size:16px;font-weight:600;">${escapeHtml(staff.name)}</div>
-          <div style="color:#8892a4;font-size:12px;">${roleLabel}</div>
+          <div style="color:#5a6272;font-size:12px;">${roleLabel}</div>
         </div>
       </div>
     </div>
 
-    <div style="background:#16213e;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #2a3a5c;">
-      <div style="color:#8892a4;font-size:12px;margin-bottom:4px;">アプリ情報</div>
-      <div style="color:#e0e0e0;font-size:14px;">${escapeHtml(CONFIG.APP_NAME)}</div>
-      <div style="color:#8892a4;font-size:12px;margin-top:2px;">バージョン: ${escapeHtml(CONFIG.APP_VERSION)}</div>
+    <div style="background:#ffffff;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #dde0e6;">
+      <div style="color:#5a6272;font-size:12px;margin-bottom:4px;">アプリ情報</div>
+      <div style="color:#1C2541;font-size:14px;">${escapeHtml(CONFIG.APP_NAME)}</div>
+      <div style="color:#5a6272;font-size:12px;margin-top:2px;">バージョン: ${escapeHtml(CONFIG.APP_VERSION)}</div>
     </div>
 
-    <button id="btnLogout" style="width:100%;padding:14px;border-radius:12px;border:1px solid #e74c3c40;background:#e74c3c20;color:#e74c3c;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;">
+    <button id="btnLogout" style="width:100%;padding:14px;border-radius:12px;border:1px solid #CE202940;background:#CE202920;color:#CE2029;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;">
       ログアウト
     </button>
   `;

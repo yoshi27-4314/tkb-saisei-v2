@@ -55,15 +55,15 @@ function setToolChecks(workOrderId, checks) {
 // 共通スタイル
 // =============================================
 const STYLES = {
-  card: 'background:#16213e;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #2a3a5c;',
+  card: 'background:#ffffff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #dde0e6;',
   btn: 'padding:10px 16px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;',
-  btnPrimary: 'background:#e67e22;color:#fff;',
-  btnSecondary: 'background:#2a3a5c;color:#8892a4;',
+  btnPrimary: 'background:#C5A258;color:#fff;',
+  btnSecondary: 'background:#dde0e6;color:#5a6272;',
   btnDanger: 'background:#c0392b;color:#fff;',
-  btnSuccess: 'background:#27ae60;color:#fff;',
-  input: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #2a3a5c;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;',
-  textarea: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #2a3a5c;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;resize:vertical;min-height:80px;',
-  label: 'display:block;color:#8892a4;font-size:12px;margin-bottom:4px;',
+  btnSuccess: 'background:#006B3F;color:#fff;',
+  input: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #dde0e6;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;',
+  textarea: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #dde0e6;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;resize:vertical;min-height:80px;',
+  label: 'display:block;color:#5a6272;font-size:12px;margin-bottom:4px;',
   sectionTitle: 'color:#fff;font-size:15px;font-weight:700;margin-bottom:12px;',
 };
 
@@ -119,7 +119,7 @@ async function renderTodayField(container) {
     <div style="padding:16px 16px 100px;">
       <div style="margin-bottom:20px;">
         <h2 style="color:#fff;font-size:20px;font-weight:700;margin:0 0 4px;">今日の現場</h2>
-        <p style="color:#8892a4;font-size:13px;margin:0;">${dateStr}</p>
+        <p style="color:#5a6272;font-size:13px;margin:0;">${dateStr}</p>
       </div>
       <div id="todayOrdersList"></div>
     </div>
@@ -148,14 +148,14 @@ async function renderTodayField(container) {
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
           <div style="flex:1;min-width:0;">
             <div style="color:#fff;font-size:15px;font-weight:700;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
-            ${address ? `<div style="color:#8892a4;font-size:12px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ${escapeHtml(address)}</div>` : ''}
-            ${timeStr ? `<div style="color:#8892a4;font-size:12px;">🕐 ${timeStr}〜</div>` : ''}
+            ${address ? `<div style="color:#5a6272;font-size:12px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ${escapeHtml(address)}</div>` : ''}
+            ${timeStr ? `<div style="color:#5a6272;font-size:12px;">🕐 ${timeStr}〜</div>` : ''}
           </div>
           <div style="margin-left:8px;flex-shrink:0;">
             ${statusBadge(order.status)}
           </div>
         </div>
-        ${staffNames ? `<div style="color:#8892a4;font-size:12px;margin-bottom:12px;">👷 ${escapeHtml(staffNames)}</div>` : ''}
+        ${staffNames ? `<div style="color:#5a6272;font-size:12px;margin-bottom:12px;">👷 ${escapeHtml(staffNames)}</div>` : ''}
         <div style="display:flex;gap:8px;">
           ${address ? `<button class="nav-btn" data-address="${escapeHtml(address)}" style="${STYLES.btn}${STYLES.btnSecondary}flex:1;">🗺️ ナビ</button>` : ''}
           <button class="start-work-btn" data-order-id="${order.id}" style="${STYLES.btn}${isActive ? STYLES.btnSuccess : STYLES.btnPrimary}flex:1;">
@@ -218,20 +218,20 @@ async function renderFieldworkDashboard(container, workOrderId, activeTab = 'pho
   container.innerHTML = `
     <div style="padding:0 0 100px;">
       <!-- ヘッダー -->
-      <div style="padding:12px 16px;background:#16213e;border-bottom:1px solid #2a3a5c;">
+      <div style="padding:12px 16px;background:#ffffff;border-bottom:1px solid #dde0e6;">
         <div style="display:flex;align-items:center;gap:8px;">
-          <button id="fwBackBtn" style="background:none;border:none;color:#e67e22;font-size:18px;cursor:pointer;padding:4px;">←</button>
+          <button id="fwBackBtn" style="background:none;border:none;color:#C5A258;font-size:18px;cursor:pointer;padding:4px;">←</button>
           <div style="flex:1;min-width:0;">
             <div style="color:#fff;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
-            <div style="color:#8892a4;font-size:11px;">${statusBadge(workOrder.status)}</div>
+            <div style="color:#5a6272;font-size:11px;">${statusBadge(workOrder.status)}</div>
           </div>
         </div>
       </div>
 
       <!-- タブバー -->
-      <div id="fwTabBar" style="display:flex;overflow-x:auto;background:#0d1b36;border-bottom:1px solid #2a3a5c;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+      <div id="fwTabBar" style="display:flex;overflow-x:auto;background:#0d1b36;border-bottom:1px solid #dde0e6;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
         ${TABS.map(tab => `
-          <button class="fw-tab" data-tab="${tab.key}" style="flex-shrink:0;padding:10px 14px;background:none;border:none;border-bottom:3px solid ${tab.key === activeTab ? '#e67e22' : 'transparent'};color:${tab.key === activeTab ? '#e67e22' : '#8892a4'};font-size:11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all 0.2s;min-width:60px;">
+          <button class="fw-tab" data-tab="${tab.key}" style="flex-shrink:0;padding:10px 14px;background:none;border:none;border-bottom:3px solid ${tab.key === activeTab ? '#C5A258' : 'transparent'};color:${tab.key === activeTab ? '#C5A258' : '#5a6272'};font-size:11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all 0.2s;min-width:60px;">
             <span style="font-size:18px;">${tab.icon}</span>
             <span>${tab.label}</span>
           </button>
@@ -260,8 +260,8 @@ async function renderFieldworkDashboard(container, workOrderId, activeTab = 'pho
       // アクティブ表示切り替え
       container.querySelectorAll('.fw-tab').forEach(b => {
         const isActive = b.dataset.tab === tab;
-        b.style.borderBottomColor = isActive ? '#e67e22' : 'transparent';
-        b.style.color = isActive ? '#e67e22' : '#8892a4';
+        b.style.borderBottomColor = isActive ? '#C5A258' : 'transparent';
+        b.style.color = isActive ? '#C5A258' : '#5a6272';
       });
       // コンテンツ描画
       renderTabContent(container.querySelector('#fwContent'), tab, workOrder, askCase);
@@ -344,7 +344,7 @@ async function renderPhotos(contentEl, workOrder) {
         <!-- 写真グリッド -->
         <div id="photoGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
           ${photos.length === 0
-            ? `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#8892a4;font-size:13px;">まだ写真がありません</div>`
+            ? `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#5a6272;font-size:13px;">まだ写真がありません</div>`
             : photos.map(p => `
               <div style="position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#0d1b36;">
                 <img src="${escapeHtml(p.photo_url)}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
@@ -458,11 +458,11 @@ async function renderChecklist(contentEl, workOrder, askCase) {
         <!-- プログレスバー -->
         <div style="${STYLES.card}">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <span style="color:#8892a4;font-size:12px;">進捗</span>
-            <span style="color:#e67e22;font-size:14px;font-weight:700;">${checkedCount}/${total}（${percent}%）</span>
+            <span style="color:#5a6272;font-size:12px;">進捗</span>
+            <span style="color:#C5A258;font-size:14px;font-weight:700;">${checkedCount}/${total}（${percent}%）</span>
           </div>
           <div style="height:8px;background:#0d1b36;border-radius:4px;overflow:hidden;">
-            <div style="height:100%;width:${percent}%;background:linear-gradient(90deg,#e67e22,#f39c12);border-radius:4px;transition:width 0.3s;"></div>
+            <div style="height:100%;width:${percent}%;background:linear-gradient(90deg,#C5A258,#C5A258);border-radius:4px;transition:width 0.3s;"></div>
           </div>
         </div>
 
@@ -470,10 +470,10 @@ async function renderChecklist(contentEl, workOrder, askCase) {
         <div id="checklistItems">
           ${items.map((item, idx) => `
             <div class="checklist-item" data-idx="${idx}" style="${STYLES.card}display:flex;align-items:center;gap:12px;cursor:pointer;padding:14px 16px;${item.checked ? 'opacity:0.6;' : ''}">
-              <div style="width:24px;height:24px;border-radius:6px;border:2px solid ${item.checked ? '#27ae60' : '#2a3a5c'};background:${item.checked ? '#27ae60' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
+              <div style="width:24px;height:24px;border-radius:6px;border:2px solid ${item.checked ? '#006B3F' : '#dde0e6'};background:${item.checked ? '#006B3F' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
                 ${item.checked ? '<span style="color:#fff;font-size:14px;">✓</span>' : ''}
               </div>
-              <span style="color:${item.checked ? '#8892a4' : '#fff'};font-size:14px;${item.checked ? 'text-decoration:line-through;' : ''}">${escapeHtml(item.label)}</span>
+              <span style="color:${item.checked ? '#5a6272' : '#fff'};font-size:14px;${item.checked ? 'text-decoration:line-through;' : ''}">${escapeHtml(item.label)}</span>
             </div>
           `).join('')}
         </div>
@@ -531,10 +531,10 @@ async function renderTimer(contentEl, workOrder) {
 
         <!-- デジタル時計 -->
         <div style="${STYLES.card}text-align:center;padding:32px 16px;">
-          <div id="timerDisplay" style="font-size:56px;font-weight:700;color:${isRunning ? '#e67e22' : '#fff'};font-family:'Courier New',monospace;letter-spacing:4px;">
+          <div id="timerDisplay" style="font-size:56px;font-weight:700;color:${isRunning ? '#C5A258' : '#fff'};font-family:'Courier New',monospace;letter-spacing:4px;">
             ${formatTimer(getElapsed())}
           </div>
-          <div style="color:#8892a4;font-size:12px;margin-top:8px;">
+          <div style="color:#5a6272;font-size:12px;margin-top:8px;">
             ${isRunning ? '計測中...' : isPaused ? '一時停止中' : '停止中'}
           </div>
         </div>
@@ -557,15 +557,15 @@ async function renderTimer(contentEl, workOrder) {
         <!-- 作業ログ履歴 -->
         <div style="${STYLES.sectionTitle}">作業ログ</div>
         ${logs.length === 0
-          ? '<div style="text-align:center;padding:20px;color:#8892a4;font-size:13px;">まだ作業ログがありません</div>'
+          ? '<div style="text-align:center;padding:20px;color:#5a6272;font-size:13px;">まだ作業ログがありません</div>'
           : logs.map(log => `
             <div style="${STYLES.card}">
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <div>
-                  <div style="color:#8892a4;font-size:11px;">${escapeHtml(getStaffById(log.staff_id)?.name || log.staff_id || '--')}</div>
+                  <div style="color:#5a6272;font-size:11px;">${escapeHtml(getStaffById(log.staff_id)?.name || log.staff_id || '--')}</div>
                   <div style="color:#fff;font-size:13px;">${formatTime(log.start_time)} 〜 ${log.end_time ? formatTime(log.end_time) : '計測中'}</div>
                 </div>
-                <div style="color:#e67e22;font-size:14px;font-weight:700;">${log.duration_minutes ? formatDuration(log.duration_minutes) : '--'}</div>
+                <div style="color:#C5A258;font-size:14px;font-weight:700;">${log.duration_minutes ? formatDuration(log.duration_minutes) : '--'}</div>
               </div>
             </div>
           `).join('')}
@@ -726,21 +726,21 @@ async function renderFoundItems(contentEl, workOrder) {
         <div style="margin-top:16px;">
           <div style="${STYLES.sectionTitle}">登録済み（${items.length}件）</div>
           ${items.length === 0
-            ? '<div style="text-align:center;padding:20px;color:#8892a4;font-size:13px;">まだ動産が登録されていません</div>'
+            ? '<div style="text-align:center;padding:20px;color:#5a6272;font-size:13px;">まだ動産が登録されていません</div>'
             : items.map(item => `
               <div style="${STYLES.card}display:flex;gap:12px;align-items:flex-start;">
                 ${item.photo_url
                   ? `<img src="${escapeHtml(item.photo_url)}" style="width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;">`
-                  : `<div style="width:64px;height:64px;border-radius:8px;background:#0d1b36;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#8892a4;font-size:24px;">📦</div>`}
+                  : `<div style="width:64px;height:64px;border-radius:8px;background:#0d1b36;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#5a6272;font-size:24px;">📦</div>`}
                 <div style="flex:1;min-width:0;">
                   <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:2px;">${escapeHtml(item.item_name)}</div>
-                  <div style="color:#8892a4;font-size:12px;">${escapeHtml(item.category || '--')}</div>
-                  ${item.estimated_value ? `<div style="color:#e67e22;font-size:13px;font-weight:600;">¥${Number(item.estimated_value).toLocaleString()}</div>` : ''}
-                  ${item.note ? `<div style="color:#8892a4;font-size:11px;margin-top:2px;">${escapeHtml(item.note)}</div>` : ''}
+                  <div style="color:#5a6272;font-size:12px;">${escapeHtml(item.category || '--')}</div>
+                  ${item.estimated_value ? `<div style="color:#C5A258;font-size:13px;font-weight:600;">¥${Number(item.estimated_value).toLocaleString()}</div>` : ''}
+                  ${item.note ? `<div style="color:#5a6272;font-size:11px;margin-top:2px;">${escapeHtml(item.note)}</div>` : ''}
                   <div style="margin-top:4px;">
                     ${item.sent_to_ryutsu
-                      ? '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;background:#27ae6022;color:#27ae60;border:1px solid #27ae6040;">流通に送信済み</span>'
-                      : '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;background:#e67e2222;color:#e67e22;border:1px solid #e67e2240;">未送信</span>'}
+                      ? '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;background:#006B3F22;color:#006B3F;border:1px solid #006B3F40;">流通に送信済み</span>'
+                      : '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;background:#C5A25822;color:#C5A258;border:1px solid #C5A25840;">未送信</span>'}
                   </div>
                 </div>
               </div>
@@ -832,7 +832,7 @@ async function renderMemos(contentEl, workOrder) {
               📷
               <input type="file" accept="image/*" capture="environment" id="memoPhoto" style="display:none;">
             </label>
-            <div id="memoPhotoName" style="flex:1;color:#8892a4;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>
+            <div id="memoPhotoName" style="flex:1;color:#5a6272;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></div>
             <button id="memoSubmitBtn" style="${STYLES.btn}${STYLES.btnPrimary}flex-shrink:0;">保存</button>
           </div>
         </div>
@@ -840,12 +840,12 @@ async function renderMemos(contentEl, workOrder) {
         <!-- メモ一覧 -->
         <div style="margin-top:16px;">
           ${memos.length === 0
-            ? '<div style="text-align:center;padding:20px;color:#8892a4;font-size:13px;">まだメモがありません</div>'
+            ? '<div style="text-align:center;padding:20px;color:#5a6272;font-size:13px;">まだメモがありません</div>'
             : memos.map(memo => `
               <div style="${STYLES.card}">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                  <span style="color:#8892a4;font-size:11px;">${escapeHtml(getStaffById(memo.created_by)?.name || memo.created_by || '--')}</span>
-                  <span style="color:#8892a4;font-size:11px;">${formatTime(memo.created_at)}</span>
+                  <span style="color:#5a6272;font-size:11px;">${escapeHtml(getStaffById(memo.created_by)?.name || memo.created_by || '--')}</span>
+                  <span style="color:#5a6272;font-size:11px;">${formatTime(memo.created_at)}</span>
                 </div>
                 <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(memo.content)}</div>
                 ${memo.photo_url ? `<img src="${escapeHtml(memo.photo_url)}" style="max-width:100%;border-radius:8px;margin-top:8px;max-height:200px;object-fit:cover;">` : ''}
@@ -924,8 +924,8 @@ function renderTools(contentEl, workOrder) {
         <div style="${STYLES.sectionTitle}">道具リスト</div>
         <div style="${STYLES.card}margin-bottom:16px;">
           <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="color:#8892a4;font-size:12px;">確認済み</span>
-            <span style="color:#e67e22;font-size:14px;font-weight:700;">${checkedCount}/${total}</span>
+            <span style="color:#5a6272;font-size:12px;">確認済み</span>
+            <span style="color:#C5A258;font-size:14px;font-weight:700;">${checkedCount}/${total}</span>
           </div>
         </div>
 
@@ -934,11 +934,11 @@ function renderTools(contentEl, workOrder) {
             const isChecked = checks[idx] === true;
             return `
               <div class="tool-item" data-idx="${idx}" style="${STYLES.card}display:flex;align-items:center;gap:12px;cursor:pointer;padding:14px 16px;${isChecked ? 'opacity:0.7;' : ''}">
-                <div style="width:28px;height:28px;border-radius:8px;border:2px solid ${isChecked ? '#27ae60' : '#2a3a5c'};background:${isChecked ? '#27ae60' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
+                <div style="width:28px;height:28px;border-radius:8px;border:2px solid ${isChecked ? '#006B3F' : '#dde0e6'};background:${isChecked ? '#006B3F' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
                   ${isChecked ? '<span style="color:#fff;font-size:16px;">✓</span>' : ''}
                 </div>
-                <span style="color:${isChecked ? '#8892a4' : '#fff'};font-size:14px;">${escapeHtml(tool)}</span>
-                ${isChecked ? '<span style="color:#27ae60;font-size:11px;margin-left:auto;">持った</span>' : ''}
+                <span style="color:${isChecked ? '#5a6272' : '#fff'};font-size:14px;">${escapeHtml(tool)}</span>
+                ${isChecked ? '<span style="color:#006B3F;font-size:11px;margin-left:auto;">持った</span>' : ''}
               </div>
             `;
           }).join('')}
@@ -973,14 +973,14 @@ function renderRoles(contentEl, workOrder) {
 
       ${instructions ? `
         <div style="${STYLES.card}margin-bottom:16px;">
-          <div style="color:#8892a4;font-size:11px;margin-bottom:4px;">作業指示</div>
+          <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">作業指示</div>
           <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(instructions)}</div>
         </div>
       ` : ''}
 
       <div>
         ${staffIds.length === 0
-          ? '<div style="text-align:center;padding:20px;color:#8892a4;font-size:13px;">担当スタッフが未割り当てです</div>'
+          ? '<div style="text-align:center;padding:20px;color:#5a6272;font-size:13px;">担当スタッフが未割り当てです</div>'
           : staffIds.map(id => {
             const s = getStaffById(id);
             if (!s) return '';
@@ -989,7 +989,7 @@ function renderRoles(contentEl, workOrder) {
                 <div style="width:44px;height:44px;border-radius:50%;background:#0d1b36;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${s.avatar}</div>
                 <div style="flex:1;">
                   <div style="color:#fff;font-size:14px;font-weight:600;">${escapeHtml(s.name)}</div>
-                  <div style="color:#8892a4;font-size:12px;">${s.role === 'admin' ? '管理者' : s.role === 'display_only' ? '表示のみ' : '作業員'}</div>
+                  <div style="color:#5a6272;font-size:12px;">${s.role === 'admin' ? '管理者' : s.role === 'display_only' ? '表示のみ' : '作業員'}</div>
                 </div>
               </div>
             `;
@@ -998,7 +998,7 @@ function renderRoles(contentEl, workOrder) {
 
       ${admin && !instructions ? `
         <div style="margin-top:16px;">
-          <div style="color:#8892a4;font-size:12px;margin-bottom:8px;">作業指示を追加（管理者のみ）</div>
+          <div style="color:#5a6272;font-size:12px;margin-bottom:8px;">作業指示を追加（管理者のみ）</div>
           <textarea id="roleInstructionsInput" placeholder="作業指示を入力..." style="${STYLES.textarea}">${escapeHtml(workOrder.instructions || '')}</textarea>
           <button id="roleInstructionsSaveBtn" style="${STYLES.btn}${STYLES.btnPrimary}width:100%;margin-top:8px;">保存</button>
         </div>
@@ -1059,9 +1059,9 @@ function renderMap(contentEl, workOrder, askCase) {
       <div style="${STYLES.sectionTitle}">マップ</div>
 
       <div style="${STYLES.card}">
-        <div style="color:#8892a4;font-size:11px;margin-bottom:4px;">現場住所</div>
+        <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">現場住所</div>
         <div style="color:#fff;font-size:15px;font-weight:600;margin-bottom:16px;">
-          ${address ? escapeHtml(address) : '<span style="color:#8892a4;">住所が未設定です</span>'}
+          ${address ? escapeHtml(address) : '<span style="color:#5a6272;">住所が未設定です</span>'}
         </div>
 
         ${address ? `
@@ -1078,7 +1078,7 @@ function renderMap(contentEl, workOrder, askCase) {
 
       ${address ? `
         <div style="${STYLES.card}">
-          <div style="color:#8892a4;font-size:12px;text-align:center;">
+          <div style="color:#5a6272;font-size:12px;text-align:center;">
             Google Mapsが外部ブラウザで開きます
           </div>
         </div>
@@ -1113,21 +1113,21 @@ async function renderCompletion(contentEl, workOrder, askCase) {
 
         <div style="${STYLES.card}text-align:center;padding:24px;">
           <div style="font-size:48px;margin-bottom:8px;">✅</div>
-          <div style="color:#27ae60;font-size:16px;font-weight:700;margin-bottom:4px;">完了報告済み</div>
-          <span style="display:inline-block;padding:4px 12px;border-radius:10px;font-size:11px;background:#27ae6022;color:#27ae60;border:1px solid #27ae6040;margin-top:8px;">アスカラに通知済み</span>
+          <div style="color:#006B3F;font-size:16px;font-weight:700;margin-bottom:4px;">完了報告済み</div>
+          <span style="display:inline-block;padding:4px 12px;border-radius:10px;font-size:11px;background:#006B3F22;color:#006B3F;border:1px solid #006B3F40;margin-top:8px;">アスカラに通知済み</span>
         </div>
 
         <div style="${STYLES.card}">
-          <div style="color:#8892a4;font-size:11px;margin-bottom:4px;">報告日時</div>
+          <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">報告日時</div>
           <div style="color:#fff;font-size:14px;margin-bottom:12px;">${formatDateFull(existingReport.created_at)} ${formatTime(existingReport.created_at)}</div>
 
           ${existingReport.comment ? `
-            <div style="color:#8892a4;font-size:11px;margin-bottom:4px;">コメント</div>
+            <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">コメント</div>
             <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(existingReport.comment)}</div>
           ` : ''}
 
           ${existingReport.photo_urls && existingReport.photo_urls.length > 0 ? `
-            <div style="color:#8892a4;font-size:11px;margin-top:12px;margin-bottom:8px;">完了写真</div>
+            <div style="color:#5a6272;font-size:11px;margin-top:12px;margin-bottom:8px;">完了写真</div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
               ${existingReport.photo_urls.map(url => `
                 <div style="aspect-ratio:1;border-radius:8px;overflow:hidden;">
@@ -1152,7 +1152,7 @@ async function renderCompletion(contentEl, workOrder, askCase) {
 
         <!-- 完了写真 -->
         <div style="${STYLES.card}">
-          <div style="color:#8892a4;font-size:12px;margin-bottom:8px;">完了写真</div>
+          <div style="color:#5a6272;font-size:12px;margin-bottom:8px;">完了写真</div>
           <label style="display:flex;align-items:center;justify-content:center;gap:8px;${STYLES.btn}${STYLES.btnSecondary}cursor:pointer;margin-bottom:12px;">
             📷 写真を追加
             <input type="file" accept="image/*" capture="environment" id="completionPhotoInput" style="display:none;" multiple>
@@ -1169,7 +1169,7 @@ async function renderCompletion(contentEl, workOrder, askCase) {
 
         <!-- コメント -->
         <div style="${STYLES.card}">
-          <div style="color:#8892a4;font-size:12px;margin-bottom:8px;">コメント</div>
+          <div style="color:#5a6272;font-size:12px;margin-bottom:8px;">コメント</div>
           <textarea id="completionComment" placeholder="作業完了報告のコメント..." style="${STYLES.textarea}">${escapeHtml(contentEl._savedComment || '')}</textarea>
         </div>
 

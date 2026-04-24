@@ -1,12 +1,12 @@
 /**
  * テイクバック再生 v2 - メインエントリポイント
- * モジュール構成: 案件(cases) / 現場作業(fieldwork) / ツール(tools) / マイページ(mypage)
+ * Old Gucci Light Theme - 流通v2と統一
  */
 import { CONFIG } from './core/config.js';
-import { initDB, getTodayWorkOrders, getWorkOrders, getWorkOrderStatusCounts, getNotices, getAttendanceByDate, getAskCase } from './core/db.js';
+import { initDB, getTodayWorkOrders, getWorkOrderStatusCounts, getNotices, getAttendanceByDate, getAskCase } from './core/db.js';
 import { getCurrentStaff, showLoginScreen, logout, isAdmin, getAllStaff } from './core/auth.js';
 import { registerRoute, navigate } from './core/router.js';
-import { showToast, showLoading, statusBadge, emptyState, escapeHtml, formatDate, formatDateFull, formatTime, formatDuration } from './core/ui.js';
+import { showToast, showLoading, statusBadge, emptyState, escapeHtml, formatDate } from './core/ui.js';
 import { renderCases } from './cases/index.js';
 import { renderFieldwork } from './fieldwork/index.js';
 import { renderTools } from './tools/index.js';
@@ -34,9 +34,9 @@ async function boot() {
   }
 
   if (!initDB()) {
-    app.innerHTML = `<div style="padding:40px;text-align:center;color:#e74c3c;">
+    app.innerHTML = `<div style="padding:40px;text-align:center;color:#CE2029;">
       <p>データベースに接続できません</p>
-      <p style="font-size:12px;color:#8892a4;margin-top:8px;">ページを再読み込みしてください</p>
+      <p style="font-size:12px;color:#5a6272;margin-top:8px;">ページを再読み込みしてください</p>
     </div>`;
     return;
   }
@@ -146,71 +146,71 @@ async function renderHome() {
         }).join('・');
 
         return `
-          <div class="card" data-order-id="${order.id}" style="border-left:3px solid #e67e22;">
+          <div class="card" data-order-id="${order.id}">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;">
               <div style="flex:1;">
                 <div style="font-weight:700;font-size:15px;margin-bottom:4px;">${escapeHtml(caseName)}</div>
-                <div style="font-size:12px;color:#8892a4;">
+                <div style="font-size:12px;color:#5a6272;">
                   ${order.start_time ? '🕐 ' + escapeHtml(order.start_time) + '〜' : ''}
                   ${order.site_address ? ' 📍 ' + escapeHtml(order.site_address) : ''}
                 </div>
-                <div style="font-size:12px;color:#8892a4;margin-top:2px;">👷 ${escapeHtml(staffNames)}</div>
+                <div style="font-size:12px;color:#5a6272;margin-top:2px;">👷 ${escapeHtml(staffNames)}</div>
               </div>
               <div>${statusBadge(order.status)}</div>
             </div>
             <div style="display:flex;gap:8px;margin-top:10px;">
-              ${order.site_address ? `<button class="btn-nav" data-address="${escapeHtml(order.site_address)}" style="flex:1;padding:8px;border-radius:8px;background:#3498db;color:#fff;border:none;font-size:12px;cursor:pointer;">🗺️ ナビ</button>` : ''}
-              <button class="btn-start" data-order-id="${order.id}" style="flex:1;padding:8px;border-radius:8px;background:#e67e22;color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;">🏗️ 作業開始</button>
+              ${order.site_address ? `<button class="btn-nav btn btn-sm" data-address="${escapeHtml(order.site_address)}" style="flex:1;background:#1C2541;color:#fff;border:none;">🗺️ ナビ</button>` : ''}
+              <button class="btn-start btn btn-sm btn-primary" data-order-id="${order.id}" style="flex:1;">🏗️ 作業開始</button>
             </div>
           </div>
         `;
       }).join('');
     } else {
-      todayHtml = `<div style="text-align:center;padding:24px;color:#8892a4;font-size:13px;">今日の予定はありません</div>`;
+      todayHtml = `<div style="text-align:center;padding:24px;color:#8a8a8a;font-size:13px;">今日の予定はありません</div>`;
     }
 
     content.innerHTML = `
-      <div class="fade-in">
+      <div class="fade-in" style="padding:16px;">
         <!-- 挨拶 -->
         <div style="padding:4px 0 16px;">
-          <div style="font-size:18px;font-weight:700;color:#e67e22;">${greeting}、${escapeHtml(staff.name.split(/[　 ]/)[0])}さん</div>
-          <div style="color:#8892a4;font-size:12px;">${today.getMonth()+1}月${today.getDate()}日（${dayNames[today.getDay()]}）</div>
+          <div style="font-size:18px;font-weight:700;color:#1C2541;">${greeting}、${escapeHtml(staff.name.split(/[　 ]/)[0])}さん</div>
+          <div style="color:#5a6272;font-size:12px;">${today.getMonth()+1}月${today.getDate()}日（${dayNames[today.getDay()]}）</div>
         </div>
 
         <!-- KPI -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;">
-          <div style="background:#16213e;border-radius:12px;padding:14px;text-align:center;border:1px solid #2a3a5c;">
-            <div style="font-size:28px;font-weight:700;color:#e67e22;">${todayOrders.length}</div>
-            <div style="font-size:11px;color:#8892a4;">今日の現場</div>
+        <div class="stats-grid" style="margin-bottom:20px;">
+          <div class="stat-card">
+            <div class="stat-num" style="color:#C5A258;">${todayOrders.length}</div>
+            <div class="stat-label">今日の現場</div>
           </div>
-          <div style="background:#16213e;border-radius:12px;padding:14px;text-align:center;border:1px solid #2a3a5c;">
-            <div style="font-size:28px;font-weight:700;color:#3498db;">${activeCount + planningCount}</div>
-            <div style="font-size:11px;color:#8892a4;">進行中案件</div>
+          <div class="stat-card">
+            <div class="stat-num" style="color:#1C2541;">${activeCount + planningCount}</div>
+            <div class="stat-label">進行中案件</div>
           </div>
-          <div style="background:#16213e;border-radius:12px;padding:14px;text-align:center;border:1px solid #2a3a5c;">
-            <div style="font-size:28px;font-weight:700;color:#2ecc71;">${completedCount}</div>
-            <div style="font-size:11px;color:#8892a4;">完了済</div>
+          <div class="stat-card">
+            <div class="stat-num" style="color:#006B3F;">${completedCount}</div>
+            <div class="stat-label">完了済</div>
           </div>
         </div>
 
         <!-- 今日の現場 -->
-        <div style="font-size:13px;font-weight:700;color:#8892a4;margin-bottom:8px;">📋 今日の現場</div>
+        <div class="section-title" style="padding-left:0;">📋 今日の現場</div>
         ${todayHtml}
 
         <!-- 出勤メンバー -->
-        <div style="background:#16213e;border-radius:12px;padding:14px;border:1px solid #2a3a5c;margin-top:16px;">
-          <div style="font-size:13px;font-weight:700;color:#8892a4;margin-bottom:8px;">👥 今日の出勤</div>
-          <div style="font-size:14px;color:#e0e0e0;">${escapeHtml(clockedInNames)}</div>
+        <div class="card" style="margin-top:16px;cursor:default;">
+          <div style="font-size:13px;font-weight:700;color:#5a6272;margin-bottom:8px;">👥 今日の出勤</div>
+          <div style="font-size:14px;color:#1C2541;">${escapeHtml(clockedInNames)}</div>
         </div>
 
         <!-- お知らせ -->
         ${notices.length > 0 ? `
           <div style="margin-top:16px;">
-            <div style="font-size:13px;font-weight:700;color:#8892a4;margin-bottom:8px;">📢 お知らせ</div>
+            <div class="section-title" style="padding-left:0;">📢 お知らせ</div>
             ${notices.map(n => `
-              <div style="background:#16213e;border-radius:8px;padding:10px 14px;margin-bottom:8px;border:1px solid #2a3a5c;">
-                <div style="font-size:13px;color:#e0e0e0;">${escapeHtml(n.title)}</div>
-                <div style="font-size:11px;color:#5a6272;margin-top:2px;">${formatDate(n.created_at)}</div>
+              <div style="background:#fff;border-radius:8px;padding:10px 14px;margin-bottom:8px;border:1px solid #dde0e6;box-shadow:0 1px 4px rgba(28,37,65,0.06);">
+                <div style="font-size:13px;color:#1C2541;">${escapeHtml(n.title)}</div>
+                <div style="font-size:11px;color:#8a8a8a;margin-top:2px;">${formatDate(n.created_at)}</div>
               </div>
             `).join('')}
           </div>
@@ -219,15 +219,14 @@ async function renderHome() {
         <!-- パイプライン（管理者のみ） -->
         ${staff.role === 'admin' ? `
           <div style="margin-top:16px;">
-            <div style="font-size:13px;font-weight:700;color:#8892a4;margin-bottom:8px;">📊 ステータス</div>
+            <div class="section-title" style="padding-left:0;">📊 ステータス</div>
             <div style="display:flex;gap:4px;overflow-x:auto;padding-bottom:4px;">
               ${CONFIG.STATUS_FLOW.map(st => {
                 const count = statusCounts[st] || 0;
-                const icon = CONFIG.STATUS_ICONS[st] || '📋';
                 return `
-                  <div style="display:flex;flex-direction:column;align-items:center;min-width:56px;padding:8px 4px;border-radius:8px;background:#16213e;border:1px solid #2a3a5c;">
-                    <div style="font-size:18px;font-weight:700;color:${count > 0 ? '#e67e22' : '#5a6272'};">${count}</div>
-                    <div style="font-size:8px;color:#8892a4;text-align:center;line-height:1.2;">${st}</div>
+                  <div style="display:flex;flex-direction:column;align-items:center;min-width:56px;padding:8px 4px;border-radius:8px;background:#fff;border:1px solid #dde0e6;box-shadow:0 1px 4px rgba(28,37,65,0.06);">
+                    <div style="font-size:18px;font-weight:700;color:${count > 0 ? '#C5A258' : '#8a8a8a'};">${count}</div>
+                    <div style="font-size:8px;color:#5a6272;text-align:center;line-height:1.2;">${st}</div>
                   </div>
                 `;
               }).join('')}
@@ -256,7 +255,7 @@ async function renderHome() {
     });
 
     content.querySelectorAll('[data-order-id]').forEach(el => {
-      if (!el.classList.contains('btn-start')) {
+      if (!el.classList.contains('btn-start') && !el.classList.contains('btn-nav')) {
         el.addEventListener('click', () => {
           navigate('fieldwork', { action: 'work', id: el.dataset.orderId });
         });

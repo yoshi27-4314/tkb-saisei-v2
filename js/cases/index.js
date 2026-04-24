@@ -92,10 +92,10 @@ async function renderCaseList(container, params = {}) {
     <div style="padding:16px 16px 100px;">
       <!-- ヘッダー -->
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-        <h2 style="color:#fff;font-size:18px;font-weight:700;margin:0;">案件一覧</h2>
+        <h2 style="color:#ffffff;font-size:18px;font-weight:700;margin:0;">案件一覧</h2>
         <div style="display:flex;gap:8px;">
-          ${isAdmin() ? `<button id="btnAcceptCase" style="background:#3498db;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;">案件受取</button>` : ''}
-          <button id="btnAddCase" style="background:#e67e22;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;">+ 案件追加</button>
+          ${isAdmin() ? `<button id="btnAcceptCase" style="background:#3498db;color:#ffffff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;">案件受取</button>` : ''}
+          <button id="btnAddCase" style="background:#006B3F;color:#ffffff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;">+ 案件追加</button>
         </div>
       </div>
 
@@ -103,7 +103,7 @@ async function renderCaseList(container, params = {}) {
       <div id="statusTabs" style="display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;">
         ${STATUS_TABS.map(t => `
           <button class="status-tab" data-tab="${t.key}"
-            style="flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid ${activeTab === t.key ? '#e67e22' : '#2a3a5c'};background:${activeTab === t.key ? '#e67e2233' : 'transparent'};color:${activeTab === t.key ? '#e67e22' : '#8892a4'};cursor:pointer;white-space:nowrap;">
+            style="flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid ${activeTab === t.key ? '#006B3F' : '#dde0e6'};background:${activeTab === t.key ? '#006B3F33' : 'transparent'};color:${activeTab === t.key ? '#006B3F' : '#5a6272'};cursor:pointer;white-space:nowrap;">
             ${t.label}
             <span style="font-size:10px;opacity:0.7;margin-left:2px;">
               ${t.key === 'all' ? casesWithStatus.length : casesWithStatus.filter(c => t.statuses?.includes(c.tkbs_status)).length}
@@ -115,7 +115,7 @@ async function renderCaseList(container, params = {}) {
       <!-- 検索 -->
       <div style="margin-bottom:16px;">
         <input id="searchInput" type="text" placeholder="案件名・住所で検索..."
-          style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;"
+          style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;"
           value="${escapeHtml(params.search || '')}">
       </div>
 
@@ -183,23 +183,23 @@ function renderCaseCard(c) {
 
   return `
     <div class="case-card" data-case-id="${c.id}"
-      style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
+      style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;transition:border-color 0.2s;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
         <div style="flex:1;min-width:0;">
-          <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+          <div style="font-size:14px;font-weight:700;color:#ffffff;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
             ${icon} ${escapeHtml(c.title || '無題')}
           </div>
-          ${c.site_address ? `<div style="font-size:12px;color:#8892a4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
+          ${c.site_address ? `<div style="font-size:12px;color:#5a6272;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
         </div>
         <div style="margin-left:8px;flex-shrink:0;">
           ${statusBadge(c.tkbs_status)}
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div style="font-size:11px;color:#8892a4;">
+        <div style="font-size:11px;color:#5a6272;">
           ${staffNames ? `👷 ${escapeHtml(staffNames)}` : '担当未定'}
         </div>
-        <div style="font-size:11px;color:#8892a4;">
+        <div style="font-size:11px;color:#5a6272;">
           ${c.work_orders.length > 0 ? `作業指示: ${c.work_orders.length}件` : ''}
         </div>
       </div>
@@ -243,15 +243,15 @@ async function showAcceptCaseModal() {
 
   const bodyHtml = `
     <div style="max-height:400px;overflow-y:auto;">
-      <p style="color:#8892a4;font-size:12px;margin-bottom:12px;">アスカラから受け取る案件を選択してください</p>
+      <p style="color:#5a6272;font-size:12px;margin-bottom:12px;">アスカラから受け取る案件を選択してください</p>
       ${pendingCases.map(c => `
         <label class="accept-item" data-id="${c.id}"
-          style="display:flex;align-items:flex-start;gap:10px;padding:12px;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;margin-bottom:8px;cursor:pointer;">
-          <input type="checkbox" value="${c.id}" style="margin-top:2px;accent-color:#e67e22;">
+          style="display:flex;align-items:flex-start;gap:10px;padding:12px;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;margin-bottom:8px;cursor:pointer;">
+          <input type="checkbox" value="${c.id}" style="margin-top:2px;accent-color:#006B3F;">
           <div style="flex:1;min-width:0;">
-            <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:2px;">${escapeHtml(c.title || '無題')}</div>
-            ${c.site_address ? `<div style="font-size:11px;color:#8892a4;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
-            ${c.description ? `<div style="font-size:11px;color:#8892a4;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.description)}</div>` : ''}
+            <div style="font-size:13px;font-weight:600;color:#ffffff;margin-bottom:2px;">${escapeHtml(c.title || '無題')}</div>
+            ${c.site_address ? `<div style="font-size:11px;color:#5a6272;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
+            ${c.description ? `<div style="font-size:11px;color:#5a6272;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.description)}</div>` : ''}
           </div>
         </label>
       `).join('')}
@@ -327,14 +327,14 @@ async function renderCaseDetail(container, params = {}) {
     <div style="padding:16px 16px 100px;">
       <!-- ヘッダー -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <button id="btnBack" style="background:none;border:none;color:#8892a4;font-size:18px;cursor:pointer;padding:4px;">←</button>
-        <h2 style="color:#fff;font-size:16px;font-weight:700;margin:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(askCase.title || '無題')}</h2>
-        ${isAdmin() ? `<button id="btnNewOrder" style="background:#e67e22;color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">+ 作業指示</button>` : ''}
+        <button id="btnBack" style="background:none;border:none;color:#5a6272;font-size:18px;cursor:pointer;padding:4px;">←</button>
+        <h2 style="color:#ffffff;font-size:16px;font-weight:700;margin:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(askCase.title || '無題')}</h2>
+        ${isAdmin() ? `<button id="btnNewOrder" style="background:#006B3F;color:#ffffff;border:none;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">+ 作業指示</button>` : ''}
       </div>
 
       <!-- 案件情報 -->
-      <div style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:16px;margin-bottom:16px;">
-        <div style="font-size:13px;font-weight:700;color:#e67e22;margin-bottom:12px;">案件情報</div>
+      <div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:13px;font-weight:700;color:#006B3F;margin-bottom:12px;">案件情報</div>
         ${renderDetailRow('案件名', askCase.title)}
         ${renderDetailRow('カテゴリ', askCase.category)}
         ${askCase.subcategory ? renderDetailRow('種別', askCase.subcategory) : ''}
@@ -346,8 +346,8 @@ async function renderCaseDetail(container, params = {}) {
 
       <!-- 連絡先 -->
       ${contact ? `
-        <div style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:16px;margin-bottom:16px;">
-          <div style="font-size:13px;font-weight:700;color:#e67e22;margin-bottom:12px;">連絡先</div>
+        <div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:16px;margin-bottom:16px;">
+          <div style="font-size:13px;font-weight:700;color:#006B3F;margin-bottom:12px;">連絡先</div>
           ${renderDetailRow('氏名', contact.name)}
           ${contact.phone ? renderDetailRow('電話番号', contact.phone, true) : ''}
           ${contact.type ? renderDetailRow('種別', contact.type) : ''}
@@ -360,9 +360,9 @@ async function renderCaseDetail(container, params = {}) {
 
       <!-- 作業指示一覧 -->
       <div style="margin-bottom:16px;">
-        <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;">作業指示 (${sortedOrders.length}件)</div>
+        <div style="font-size:14px;font-weight:700;color:#ffffff;margin-bottom:10px;">作業指示 (${sortedOrders.length}件)</div>
         ${sortedOrders.length === 0
-          ? `<div style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:20px;text-align:center;color:#8892a4;font-size:13px;">作業指示はまだありません</div>`
+          ? `<div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:20px;text-align:center;color:#5a6272;font-size:13px;">作業指示はまだありません</div>`
           : sortedOrders.map(o => renderWorkOrderCard(o)).join('')
         }
       </div>
@@ -405,8 +405,8 @@ function renderDetailRow(label, value, isPhone = false) {
     : escapeHtml(value);
   return `
     <div style="display:flex;margin-bottom:8px;font-size:13px;">
-      <div style="color:#8892a4;min-width:80px;flex-shrink:0;">${escapeHtml(label)}</div>
-      <div style="color:#e0e0e0;flex:1;word-break:break-all;">${displayValue}</div>
+      <div style="color:#5a6272;min-width:80px;flex-shrink:0;">${escapeHtml(label)}</div>
+      <div style="color:#1C2541;flex:1;word-break:break-all;">${displayValue}</div>
     </div>
   `;
 }
@@ -419,10 +419,10 @@ function renderStatusChangeSection(latestOrder) {
   const currentIdx = CONFIG.STATUS_FLOW.indexOf(latestOrder.status);
 
   return `
-    <div style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:16px;margin-bottom:16px;">
-      <div style="font-size:13px;font-weight:700;color:#e67e22;margin-bottom:12px;">ステータス変更</div>
+    <div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:13px;font-weight:700;color:#006B3F;margin-bottom:12px;">ステータス変更</div>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-        <span style="font-size:12px;color:#8892a4;">現在:</span>
+        <span style="font-size:12px;color:#5a6272;">現在:</span>
         ${statusBadge(latestOrder.status)}
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;" id="statusButtons">
@@ -431,7 +431,7 @@ function renderStatusChangeSection(latestOrder) {
           const icon = CONFIG.STATUS_ICONS[s] || '';
           return `
             <button class="status-change-btn" data-status="${s}" data-order-id="${latestOrder.id}"
-              style="padding:6px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #2a3a5c;background:#0f0f1a;color:#e0e0e0;cursor:pointer;white-space:nowrap;">
+              style="padding:6px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;cursor:pointer;white-space:nowrap;">
               ${icon} ${s}
             </button>
           `;
@@ -479,19 +479,19 @@ function renderWorkOrderCard(order) {
 
   return `
     <div class="work-order-card" data-order-id="${order.id}"
-      style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;transition:border-color 0.2s;">
+      style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:14px;margin-bottom:8px;cursor:pointer;transition:border-color 0.2s;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <div style="font-size:13px;font-weight:600;color:#fff;">
+        <div style="font-size:13px;font-weight:600;color:#ffffff;">
           ${icon} ${order.work_date ? formatDateFull(order.work_date) : '日程未定'}
           ${order.work_time ? ` ${escapeHtml(order.work_time)}` : ''}
         </div>
         ${statusBadge(order.status)}
       </div>
-      <div style="font-size:12px;color:#8892a4;">
+      <div style="font-size:12px;color:#5a6272;">
         ${staffNames ? `👷 ${escapeHtml(staffNames)}` : '担当未定'}
       </div>
       ${order.instructions ? `
-        <div style="font-size:11px;color:#8892a4;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+        <div style="font-size:11px;color:#5a6272;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
           📝 ${escapeHtml(order.instructions)}
         </div>
       ` : ''}
@@ -529,42 +529,42 @@ async function renderNewWorkOrder(container, params = {}) {
     <div style="padding:16px 16px 100px;">
       <!-- ヘッダー -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <button id="btnBack" style="background:none;border:none;color:#8892a4;font-size:18px;cursor:pointer;padding:4px;">←</button>
-        <h2 style="color:#fff;font-size:16px;font-weight:700;margin:0;">作業指示の作成</h2>
+        <button id="btnBack" style="background:none;border:none;color:#5a6272;font-size:18px;cursor:pointer;padding:4px;">←</button>
+        <h2 style="color:#ffffff;font-size:16px;font-weight:700;margin:0;">作業指示の作成</h2>
       </div>
 
       <!-- 案件名表示 -->
-      <div style="background:#16213e;border:1px solid #2a3a5c;border-radius:12px;padding:12px;margin-bottom:16px;">
-        <div style="font-size:11px;color:#8892a4;margin-bottom:4px;">対象案件</div>
-        <div style="font-size:14px;color:#fff;font-weight:600;">${escapeHtml(caseTitle)}</div>
-        ${subcategory ? `<div style="font-size:12px;color:#e67e22;margin-top:2px;">${escapeHtml(subcategory)}</div>` : ''}
+      <div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:12px;margin-bottom:16px;">
+        <div style="font-size:11px;color:#5a6272;margin-bottom:4px;">対象案件</div>
+        <div style="font-size:14px;color:#ffffff;font-weight:600;">${escapeHtml(caseTitle)}</div>
+        ${subcategory ? `<div style="font-size:12px;color:#006B3F;margin-top:2px;">${escapeHtml(subcategory)}</div>` : ''}
       </div>
 
       <form id="orderForm">
         <!-- 作業日 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">作業日 <span style="color:#e74c3c;">*</span></label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">作業日 <span style="color:#e74c3c;">*</span></label>
           <input type="date" id="workDate" value="${today}" required
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#0f0f1a;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- 集合時間 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">集合時間</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">集合時間</label>
           <input type="time" id="workTime" value="09:00"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#0f0f1a;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- スタッフ選択 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:8px;">担当スタッフ <span style="color:#e74c3c;">*</span></label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:8px;">担当スタッフ <span style="color:#e74c3c;">*</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             ${allStaff.map(s => `
-              <label style="display:flex;align-items:center;gap:8px;padding:10px;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;cursor:pointer;">
-                <input type="checkbox" name="staff" value="${s.id}" ${s.role === 'display_only' ? '' : ''} style="accent-color:#e67e22;">
-                <span style="font-size:13px;color:#e0e0e0;">
+              <label style="display:flex;align-items:center;gap:8px;padding:10px;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;cursor:pointer;">
+                <input type="checkbox" name="staff" value="${s.id}" ${s.role === 'display_only' ? '' : ''} style="accent-color:#006B3F;">
+                <span style="font-size:13px;color:#1C2541;">
                   ${s.avatar} ${escapeHtml(s.name)}
-                  ${s.role === 'display_only' ? '<span style="font-size:10px;color:#8892a4;">（外部）</span>' : ''}
+                  ${s.role === 'display_only' ? '<span style="font-size:10px;color:#5a6272;">（外部）</span>' : ''}
                 </span>
               </label>
             `).join('')}
@@ -573,11 +573,11 @@ async function renderNewWorkOrder(container, params = {}) {
 
         <!-- 道具 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:8px;">持ち物・道具</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:8px;">持ち物・道具</label>
           <div style="display:flex;flex-wrap:wrap;gap:6px;">
             ${CONFIG.DEFAULT_TOOLS.map(tool => `
-              <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:6px;cursor:pointer;font-size:12px;color:#e0e0e0;">
-                <input type="checkbox" name="tool" value="${escapeHtml(tool)}" style="accent-color:#e67e22;">
+              <label style="display:flex;align-items:center;gap:4px;padding:6px 10px;background:#F8F5EE;border:1px solid #dde0e6;border-radius:6px;cursor:pointer;font-size:12px;color:#1C2541;">
+                <input type="checkbox" name="tool" value="${escapeHtml(tool)}" style="accent-color:#006B3F;">
                 ${escapeHtml(tool)}
               </label>
             `).join('')}
@@ -586,37 +586,37 @@ async function renderNewWorkOrder(container, params = {}) {
 
         <!-- 作業指示 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">作業指示・特記事項</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">作業指示・特記事項</label>
           <textarea id="instructions" rows="4" placeholder="作業内容、注意事項、お客様への対応など..."
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#0f0f1a;color:#e0e0e0;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
         </div>
 
         <!-- チェックリスト -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:8px;">
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:8px;">
             チェックリスト
-            <span style="font-size:11px;color:#8892a4;font-weight:400;">（テンプレート: ${escapeHtml(templateKey)}）</span>
+            <span style="font-size:11px;color:#5a6272;font-weight:400;">（テンプレート: ${escapeHtml(templateKey)}）</span>
           </label>
           <div id="checklistItems">
             ${templateItems.map((item, i) => `
-              <div class="checklist-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;margin-bottom:6px;">
-                <span style="color:#8892a4;font-size:12px;min-width:20px;text-align:center;">${i + 1}</span>
+              <div class="checklist-row" style="display:flex;align-items:center;gap:8px;padding:8px;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;margin-bottom:6px;">
+                <span style="color:#5a6272;font-size:12px;min-width:20px;text-align:center;">${i + 1}</span>
                 <input type="text" class="checklist-input" value="${escapeHtml(item)}"
-                  style="flex:1;padding:6px 8px;border-radius:6px;border:1px solid #2a3a5c;background:transparent;color:#e0e0e0;font-size:13px;outline:none;">
+                  style="flex:1;padding:6px 8px;border-radius:6px;border:1px solid #dde0e6;background:transparent;color:#1C2541;font-size:13px;outline:none;">
                 <button type="button" class="remove-checklist" data-index="${i}"
                   style="background:none;border:none;color:#e74c3c;font-size:14px;cursor:pointer;padding:4px;">✕</button>
               </div>
             `).join('')}
           </div>
           <button type="button" id="addChecklistItem"
-            style="width:100%;padding:8px;border-radius:8px;border:1px dashed #2a3a5c;background:transparent;color:#8892a4;font-size:12px;cursor:pointer;margin-top:4px;">
+            style="width:100%;padding:8px;border-radius:8px;border:1px dashed #dde0e6;background:transparent;color:#5a6272;font-size:12px;cursor:pointer;margin-top:4px;">
             + 項目を追加
           </button>
         </div>
 
         <!-- 送信ボタン -->
         <button type="submit" id="btnSubmit"
-          style="width:100%;padding:14px;border-radius:10px;background:#e67e22;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
+          style="width:100%;padding:14px;border-radius:10px;background:#006B3F;color:#ffffff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
           作業指示を作成
         </button>
       </form>
@@ -642,11 +642,11 @@ async function renderNewWorkOrder(container, params = {}) {
     const count = listEl.querySelectorAll('.checklist-row').length;
     const row = document.createElement('div');
     row.className = 'checklist-row';
-    row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:8px;background:#0f0f1a;border:1px solid #2a3a5c;border-radius:8px;margin-bottom:6px;';
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:8px;background:#F8F5EE;border:1px solid #dde0e6;border-radius:8px;margin-bottom:6px;';
     row.innerHTML = `
-      <span style="color:#8892a4;font-size:12px;min-width:20px;text-align:center;">${count + 1}</span>
+      <span style="color:#5a6272;font-size:12px;min-width:20px;text-align:center;">${count + 1}</span>
       <input type="text" class="checklist-input" value="" placeholder="項目名..."
-        style="flex:1;padding:6px 8px;border-radius:6px;border:1px solid #2a3a5c;background:transparent;color:#e0e0e0;font-size:13px;outline:none;">
+        style="flex:1;padding:6px 8px;border-radius:6px;border:1px solid #dde0e6;background:transparent;color:#1C2541;font-size:13px;outline:none;">
       <button type="button" class="remove-checklist"
         style="background:none;border:none;color:#e74c3c;font-size:14px;cursor:pointer;padding:4px;">✕</button>
     `;
@@ -732,30 +732,30 @@ async function renderAddCase(container, params = {}) {
     <div style="padding:16px 16px 100px;">
       <!-- ヘッダー -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <button id="btnBack" style="background:none;border:none;color:#8892a4;font-size:18px;cursor:pointer;padding:4px;">←</button>
-        <h2 style="color:#fff;font-size:16px;font-weight:700;margin:0;">案件の追加登録</h2>
+        <button id="btnBack" style="background:none;border:none;color:#5a6272;font-size:18px;cursor:pointer;padding:4px;">←</button>
+        <h2 style="color:#ffffff;font-size:16px;font-weight:700;margin:0;">案件の追加登録</h2>
       </div>
 
-      <div style="background:#0f0f1a;border:1px solid #e67e2266;border-radius:8px;padding:10px 12px;margin-bottom:16px;">
-        <div style="font-size:12px;color:#e67e22;">📍 現場からの追加登録です。アスカラにも自動反映されます。</div>
+      <div style="background:#F8F5EE;border:1px solid #006B3F66;border-radius:8px;padding:10px 12px;margin-bottom:16px;">
+        <div style="font-size:12px;color:#006B3F;">📍 現場からの追加登録です。アスカラにも自動反映されます。</div>
       </div>
 
       <form id="caseForm">
         <!-- 案件名 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">案件名 <span style="color:#e74c3c;">*</span></label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">案件名 <span style="color:#e74c3c;">*</span></label>
           <input type="text" id="caseTitle" required placeholder="例：○○様邸 片付け作業"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- 種別 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">種別 <span style="color:#e74c3c;">*</span></label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">種別 <span style="color:#e74c3c;">*</span></label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
             ${DOUSAN_SUBCATEGORIES.map(sub => `
-              <label style="display:flex;align-items:center;gap:8px;padding:10px;background:#16213e;border:1px solid #2a3a5c;border-radius:8px;cursor:pointer;">
-                <input type="radio" name="subcategory" value="${escapeHtml(sub)}" required style="accent-color:#e67e22;">
-                <span style="font-size:13px;color:#e0e0e0;">${escapeHtml(sub)}</span>
+              <label style="display:flex;align-items:center;gap:8px;padding:10px;background:#ffffff;border:1px solid #dde0e6;border-radius:8px;cursor:pointer;">
+                <input type="radio" name="subcategory" value="${escapeHtml(sub)}" required style="accent-color:#006B3F;">
+                <span style="font-size:13px;color:#1C2541;">${escapeHtml(sub)}</span>
               </label>
             `).join('')}
           </div>
@@ -763,35 +763,35 @@ async function renderAddCase(container, params = {}) {
 
         <!-- 説明 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">説明・メモ</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">説明・メモ</label>
           <textarea id="caseDescription" rows="3" placeholder="案件の詳細、お客様の要望など..."
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
         </div>
 
         <!-- 現場住所 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">現場住所</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">現場住所</label>
           <input type="text" id="siteAddress" placeholder="例：東京都○○区○○町1-2-3"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- 連絡先選択 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">連絡先</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">連絡先</label>
           <select id="contactSelect"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;appearance:auto;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;appearance:auto;">
             <option value="">-- 選択してください --</option>
             ${contacts.map(c => `<option value="${c.id}">${escapeHtml(c.name)}${c.phone ? ` (${escapeHtml(c.phone)})` : ''}</option>`).join('')}
           </select>
           <button type="button" id="btnNewContact"
-            style="margin-top:8px;background:none;border:1px dashed #2a3a5c;border-radius:8px;padding:8px 12px;color:#8892a4;font-size:12px;cursor:pointer;width:100%;">
+            style="margin-top:8px;background:none;border:1px dashed #dde0e6;border-radius:8px;padding:8px 12px;color:#5a6272;font-size:12px;cursor:pointer;width:100%;">
             + 新しい連絡先を登録
           </button>
         </div>
 
         <!-- 送信ボタン -->
         <button type="submit" id="btnSubmitCase"
-          style="width:100%;padding:14px;border-radius:10px;background:#e67e22;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
+          style="width:100%;padding:14px;border-radius:10px;background:#006B3F;color:#ffffff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
           案件を登録
         </button>
       </form>
@@ -861,37 +861,37 @@ async function renderAddContact(container, params = {}) {
     <div style="padding:16px 16px 100px;">
       <!-- ヘッダー -->
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
-        <button id="btnBack" style="background:none;border:none;color:#8892a4;font-size:18px;cursor:pointer;padding:4px;">←</button>
-        <h2 style="color:#fff;font-size:16px;font-weight:700;margin:0;">連絡先の追加登録</h2>
+        <button id="btnBack" style="background:none;border:none;color:#5a6272;font-size:18px;cursor:pointer;padding:4px;">←</button>
+        <h2 style="color:#ffffff;font-size:16px;font-weight:700;margin:0;">連絡先の追加登録</h2>
       </div>
 
-      <div style="background:#0f0f1a;border:1px solid #e67e2266;border-radius:8px;padding:10px 12px;margin-bottom:16px;">
-        <div style="font-size:12px;color:#e67e22;">📍 現場からの追加登録です。アスカラにも自動反映されます。</div>
+      <div style="background:#F8F5EE;border:1px solid #006B3F66;border-radius:8px;padding:10px 12px;margin-bottom:16px;">
+        <div style="font-size:12px;color:#006B3F;">📍 現場からの追加登録です。アスカラにも自動反映されます。</div>
       </div>
 
       <form id="contactForm">
         <!-- 氏名 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">氏名 <span style="color:#e74c3c;">*</span></label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">氏名 <span style="color:#e74c3c;">*</span></label>
           <input type="text" id="contactName" required placeholder="例：山田太郎"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- 電話番号 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">電話番号</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">電話番号</label>
           <input type="tel" id="contactPhone" placeholder="例：090-1234-5678"
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;box-sizing:border-box;">
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;box-sizing:border-box;">
         </div>
 
         <!-- 種別 -->
         <div style="margin-bottom:16px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">種別</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">種別</label>
           <div style="display:flex;flex-wrap:wrap;gap:8px;">
             ${CONTACT_TYPES.map(type => `
-              <label style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:#16213e;border:1px solid #2a3a5c;border-radius:8px;cursor:pointer;">
-                <input type="radio" name="contactType" value="${escapeHtml(type)}" style="accent-color:#e67e22;">
-                <span style="font-size:13px;color:#e0e0e0;">${escapeHtml(type)}</span>
+              <label style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:#ffffff;border:1px solid #dde0e6;border-radius:8px;cursor:pointer;">
+                <input type="radio" name="contactType" value="${escapeHtml(type)}" style="accent-color:#006B3F;">
+                <span style="font-size:13px;color:#1C2541;">${escapeHtml(type)}</span>
               </label>
             `).join('')}
           </div>
@@ -899,14 +899,14 @@ async function renderAddContact(container, params = {}) {
 
         <!-- 備考 -->
         <div style="margin-bottom:24px;">
-          <label style="display:block;font-size:13px;font-weight:600;color:#e0e0e0;margin-bottom:6px;">備考</label>
+          <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:6px;">備考</label>
           <textarea id="contactNote" rows="3" placeholder="紹介元、関係性など..."
-            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #2a3a5c;background:#16213e;color:#e0e0e0;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+            style="width:100%;padding:10px 14px;border-radius:8px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:14px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
         </div>
 
         <!-- 送信ボタン -->
         <button type="submit" id="btnSubmitContact"
-          style="width:100%;padding:14px;border-radius:10px;background:#e67e22;color:#fff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
+          style="width:100%;padding:14px;border-radius:10px;background:#006B3F;color:#ffffff;border:none;font-size:15px;font-weight:700;cursor:pointer;">
           連絡先を登録
         </button>
       </form>

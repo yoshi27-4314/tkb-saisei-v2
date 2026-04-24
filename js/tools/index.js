@@ -8,12 +8,12 @@ import { getCurrentStaff, isAdmin } from '../core/auth.js';
 
 // --- 色定数 ---
 const C = {
-  bg: '#0f0f1a',
-  card: '#16213e',
-  accent: '#e67e22',
-  text: '#e0e0e0',
-  sub: '#8892a4',
-  border: '#2a3a5c',
+  bg: '#F8F5EE',
+  card: '#ffffff',
+  accent: '#C5A258',
+  text: '#1C2541',
+  sub: '#5a6272',
+  border: '#dde0e6',
 };
 
 // ============================================================
@@ -36,7 +36,7 @@ export function renderTools(container, params = {}) {
 
   container.innerHTML = `
     <div style="padding:16px 16px 100px;max-width:480px;margin:0 auto;">
-      <h2 style="color:#fff;font-size:18px;font-weight:700;margin-bottom:16px;">ツール</h2>
+      <h2 style="color:#1C2541;font-size:18px;font-weight:700;margin-bottom:16px;">ツール</h2>
 
       <!-- ガイド -->
       <div style="margin-bottom:20px;">
@@ -72,7 +72,7 @@ export function renderTools(container, params = {}) {
     card.style.cssText = `background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px 12px;text-align:center;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.2);`;
     card.innerHTML = `
       <div style="font-size:28px;margin-bottom:6px;">${g.icon}</div>
-      <div style="color:#fff;font-size:14px;font-weight:600;">${g.label}</div>
+      <div style="color:#1C2541;font-size:14px;font-weight:600;">${g.label}</div>
       <div style="color:${C.sub};font-size:11px;margin-top:2px;">${g.desc}</div>
     `;
     card.addEventListener('click', () => renderTools(container, { page: g.key }));
@@ -92,7 +92,7 @@ export function renderTools(container, params = {}) {
     card.innerHTML = `
       <div style="font-size:24px;flex-shrink:0;">${u.icon}</div>
       <div>
-        <div style="color:#fff;font-size:14px;font-weight:600;">${u.label}</div>
+        <div style="color:#1C2541;font-size:14px;font-weight:600;">${u.label}</div>
         <div style="color:${C.sub};font-size:11px;margin-top:1px;">${u.desc}</div>
       </div>
       <div style="margin-left:auto;color:${C.sub};font-size:16px;">›</div>
@@ -111,7 +111,7 @@ export function renderTools(container, params = {}) {
     card.innerHTML = `
       <div style="font-size:24px;flex-shrink:0;">📄</div>
       <div>
-        <div style="color:#fff;font-size:14px;font-weight:600;">報告書作成</div>
+        <div style="color:#1C2541;font-size:14px;font-weight:600;">報告書作成</div>
         <div style="color:${C.sub};font-size:11px;margin-top:1px;">作業報告書PDF生成</div>
       </div>
       <div style="margin-left:auto;color:${C.sub};font-size:16px;">›</div>
@@ -129,7 +129,7 @@ function subPageHeader(container, title) {
   header.style.cssText = 'display:flex;align-items:center;gap:12px;margin-bottom:16px;';
   header.innerHTML = `
     <button id="toolBack" style="background:none;border:none;color:${C.accent};font-size:22px;cursor:pointer;padding:4px;">←</button>
-    <h2 style="color:#fff;font-size:18px;font-weight:700;margin:0;">${title}</h2>
+    <h2 style="color:#1C2541;font-size:18px;font-weight:700;margin:0;">${title}</h2>
   `;
   return header;
 }
@@ -363,7 +363,7 @@ function renderGuideSorting(container) {
         <!-- 家電リサイクル -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#e67e22;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">家</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#C5A258;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">家</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">家電リサイクル法対象</span>
           </div>
           <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
@@ -542,11 +542,11 @@ function renderAddresses(container) {
     card.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
         <div>
-          <div style="color:#fff;font-size:14px;font-weight:600;">${escapeHtml(entry.name)}</div>
+          <div style="color:#1C2541;font-size:14px;font-weight:600;">${escapeHtml(entry.name)}</div>
           <div style="color:${C.sub};font-size:11px;margin-top:2px;">${escapeHtml(entry.desc)}</div>
         </div>
         <a href="${mapsUrl}" target="_blank" rel="noopener"
-           style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;background:${C.accent};color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;box-shadow:0 2px 8px rgba(230,126,34,0.3);">
+           style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;background:${C.accent};color:#1C2541;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;box-shadow:0 2px 8px rgba(230,126,34,0.3);">
           📍 ナビ
         </a>
       </div>
@@ -571,7 +571,7 @@ function renderAiConsult(container) {
         <textarea id="aiQuestion" rows="4" placeholder="例：エアコンの取り外し手順を教えて"
           style="width:100%;box-sizing:border-box;background:#0d0d1a;border:1px solid ${C.border};border-radius:8px;color:${C.text};font-size:14px;padding:12px;resize:vertical;font-family:inherit;"></textarea>
         <button id="aiSendBtn"
-          style="margin-top:10px;width:100%;padding:12px;background:${C.accent};color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">
+          style="margin-top:10px;width:100%;padding:12px;background:${C.accent};color:#1C2541;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;">
           送信
         </button>
       </div>
@@ -619,7 +619,7 @@ function renderReport(container) {
 
       <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:24px;text-align:center;">
         <div style="font-size:48px;margin-bottom:12px;">📄</div>
-        <div style="color:#fff;font-size:16px;font-weight:600;margin-bottom:8px;">報告書作成</div>
+        <div style="color:#1C2541;font-size:16px;font-weight:600;margin-bottom:8px;">報告書作成</div>
         <div style="color:${C.sub};font-size:13px;line-height:1.6;">
           作業報告書のPDF生成機能は今後追加予定です。<br>
           案件の作業記録・写真・経費をまとめて<br>

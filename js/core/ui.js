@@ -1,5 +1,6 @@
 /**
  * テイクバック再生 v2 - 共通UIコンポーネント
+ * Old Gucci Light Theme - 流通v2と統一
  */
 
 // --- HTMLエスケープ ---
@@ -17,7 +18,7 @@ export function showToast(message, duration = 3000) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'tkbsToast';
-    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#16213e;color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;z-index:9999;opacity:0;transition:opacity 0.3s;max-width:90%;text-align:center;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);border:1px solid #2a3a5c;';
+    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#ffffff;color:#1C2541;padding:10px 20px;border-radius:8px;font-size:14px;z-index:9999;opacity:0;transition:opacity 0.3s;max-width:90%;text-align:center;pointer-events:none;box-shadow:0 4px 16px rgba(28,37,65,0.15);border:1px solid #dde0e6;';
     document.body.appendChild(toast);
   }
   toast.textContent = message;
@@ -29,8 +30,8 @@ export function showToast(message, duration = 3000) {
 // --- ローディング ---
 export function showLoading(container, text = '読み込み中...') {
   container.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;color:#8892a4;">
-      <div style="width:32px;height:32px;border:3px solid #2a3a5c;border-top-color:#e67e22;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;color:#5a6272;">
+      <div class="spinner"></div>
       <p style="margin-top:12px;font-size:13px;">${text}</p>
     </div>
   `;
@@ -39,13 +40,13 @@ export function showLoading(container, text = '読み込み中...') {
 // --- 確認ダイアログ ---
 export function showConfirm(message, onConfirm, onCancel) {
   const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(28,37,65,0.5);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;';
   overlay.innerHTML = `
-    <div style="background:#16213e;border-radius:16px;padding:24px;max-width:320px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,0.4);border:1px solid #2a3a5c;">
-      <p style="color:#e0e0e0;font-size:15px;margin-bottom:20px;line-height:1.5;">${message}</p>
+    <div style="background:#ffffff;border-radius:16px;padding:24px;max-width:320px;width:100%;text-align:center;box-shadow:0 8px 32px rgba(28,37,65,0.2);">
+      <p style="color:#1C2541;font-size:15px;margin-bottom:20px;line-height:1.5;">${message}</p>
       <div style="display:flex;gap:12px;">
-        <button id="confirmCancel" style="flex:1;padding:12px;border-radius:8px;background:#2a3a5c;color:#8892a4;border:none;font-size:14px;cursor:pointer;">キャンセル</button>
-        <button id="confirmOk" style="flex:1;padding:12px;border-radius:8px;background:#e67e22;color:#fff;border:none;font-size:14px;font-weight:bold;cursor:pointer;">OK</button>
+        <button id="confirmCancel" style="flex:1;padding:12px;border-radius:8px;background:#f0ede5;color:#5a6272;border:none;font-size:14px;cursor:pointer;">キャンセル</button>
+        <button id="confirmOk" style="flex:1;padding:12px;border-radius:8px;background:#006B3F;color:#fff;border:none;font-size:14px;font-weight:bold;cursor:pointer;">OK</button>
       </div>
     </div>
   `;
@@ -57,17 +58,17 @@ export function showConfirm(message, onConfirm, onCancel) {
 // --- モーダル ---
 export function showModal(title, bodyHtml, buttons = []) {
   const overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;display:flex;align-items:flex-end;justify-content:center;';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(28,37,65,0.5);z-index:10000;display:flex;align-items:flex-end;justify-content:center;';
   overlay.innerHTML = `
-    <div style="background:#16213e;border-radius:16px 16px 0 0;padding:20px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(0,0,0,0.4);border:1px solid #2a3a5c;border-bottom:none;">
+    <div class="slide-up" style="background:#ffffff;border-radius:16px 16px 0 0;padding:20px;max-width:480px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 -4px 32px rgba(28,37,65,0.2);">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
-        <div style="font-size:16px;font-weight:700;color:#fff;">${title}</div>
-        <button class="modal-close" style="background:none;border:none;color:#8892a4;font-size:20px;cursor:pointer;padding:4px;">✕</button>
+        <div style="font-size:16px;font-weight:700;color:#1C2541;">${title}</div>
+        <button class="modal-close" style="background:none;border:none;color:#8a8a8a;font-size:20px;cursor:pointer;padding:4px;">✕</button>
       </div>
       <div class="modal-body">${bodyHtml}</div>
       ${buttons.length > 0 ? `
         <div style="display:flex;gap:8px;margin-top:16px;">
-          ${buttons.map(b => `<button class="modal-btn" data-action="${b.action}" style="flex:1;padding:12px;border-radius:8px;background:${b.color || '#e67e22'};color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;">${b.label}</button>`).join('')}
+          ${buttons.map(b => `<button class="modal-btn" data-action="${b.action}" style="flex:1;padding:12px;border-radius:8px;background:${b.color || '#006B3F'};color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;">${b.label}</button>`).join('')}
         </div>
       ` : ''}
     </div>
@@ -81,19 +82,19 @@ export function showModal(title, bodyHtml, buttons = []) {
 // --- ステータスバッジ ---
 export function statusBadge(status) {
   const colors = {
-    '案件受取': '#3498db',
-    '作業計画': '#9b59b6',
-    '見積提出': '#f39c12',
-    '受注確定': '#27ae60',
-    '現場作業中': '#e67e22',
-    '完了報告済': '#2ecc71',
-    '請求・精算': '#1abc9c',
-    '保留': '#7f8c8d',
-    '追加作業発生': '#e74c3c',
-    'キャンセル': '#95a5a6',
+    '案件受取': '#1C2541',
+    '作業計画': '#7B2D8E',
+    '見積提出': '#C5A258',
+    '受注確定': '#006B3F',
+    '現場作業中': '#C5A258',
+    '完了報告済': '#006B3F',
+    '請求・精算': '#006B3F',
+    '保留': '#8a8a8a',
+    '追加作業発生': '#CE2029',
+    'キャンセル': '#8a8a8a',
   };
-  const color = colors[status] || '#8892a4';
-  return `<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold;background:${color}22;color:${color};border:1px solid ${color}40;">${status}</span>`;
+  const color = colors[status] || '#5a6272';
+  return `<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold;background:${color}18;color:${color};">${status}</span>`;
 }
 
 // --- 日付フォーマット ---
@@ -131,7 +132,7 @@ export function formatPrice(num) {
 // --- 空状態表示 ---
 export function emptyState(icon, message) {
   return `
-    <div style="text-align:center;padding:60px 20px;color:#8892a4;">
+    <div style="text-align:center;padding:60px 20px;color:#8a8a8a;">
       <div style="font-size:48px;margin-bottom:12px;">${icon}</div>
       <p style="font-size:14px;">${message}</p>
     </div>
@@ -146,4 +147,66 @@ export function formatDuration(minutes) {
   if (h > 0 && m > 0) return `${h}時間${m}分`;
   if (h > 0) return `${h}時間`;
   return `${m}分`;
+}
+
+// --- カメラ撮影 ---
+export function capturePhoto() {
+  return new Promise((resolve) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment';
+    input.addEventListener('change', () => {
+      if (input.files[0]) {
+        resolve(input.files[0]);
+      } else {
+        resolve(null);
+      }
+    });
+    input.click();
+  });
+}
+
+// --- ファイルをBase64に変換 ---
+export function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// --- 画像リサイズ ---
+export function resizeImage(base64, maxWidth = 1200) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      if (img.width <= maxWidth) { resolve(base64); return; }
+      const canvas = document.createElement('canvas');
+      const ratio = maxWidth / img.width;
+      canvas.width = maxWidth;
+      canvas.height = img.height * ratio;
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg', 0.85));
+    };
+    img.src = base64;
+  });
+}
+
+// --- スワイプで戻るジェスチャー ---
+export function enableSwipeBack(element, onSwipeRight) {
+  let startX = 0;
+  let startY = 0;
+  element.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  element.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = Math.abs(e.changedTouches[0].clientY - startY);
+    if (dx > 80 && dy < 50 && startX < 30) {
+      onSwipeRight();
+    }
+  }, { passive: true });
 }
