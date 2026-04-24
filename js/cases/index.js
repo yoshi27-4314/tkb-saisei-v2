@@ -17,7 +17,7 @@ const STATUS_TABS = [
 ];
 
 // 動産サブカテゴリ
-const DOUSAN_SUBCATEGORIES = ['片付け', '遺品整理', '残置物撤去', '買取'];
+const DOUSAN_SUBCATEGORIES = ['無料回収', '片付け作業', '現場作業', '入荷作業'];
 
 // 連絡先タイプ
 const CONTACT_TYPES = ['個人', '法人', '不動産会社', '弁護士', '行政', 'その他'];
