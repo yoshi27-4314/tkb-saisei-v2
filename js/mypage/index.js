@@ -449,7 +449,7 @@ async function renderExpensesSection(container, staff, backBar) {
         <div style="background:#ffffff;border-radius:10px;padding:12px;margin-bottom:8px;border:1px solid #dde0e6;">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
             <div style="display:flex;align-items:center;gap:8px;">
-              <span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600;background:${catColor}20;color:${catColor};border:1px solid ${catColor}40;">${escapeHtml(exp.category)}</span>
+              <span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:12px;font-weight:600;background:${catColor}20;color:${catColor};border:1px solid ${catColor}40;">${escapeHtml(exp.category)}</span>
               <span style="color:#1C2541;font-size:15px;font-weight:600;">${formatPrice(exp.amount)}</span>
             </div>
             <span style="color:#5a6272;font-size:12px;">${formatDate(exp.expense_date || exp.created_at)}</span>
@@ -632,14 +632,14 @@ function renderMembersSection(container, staff, backBar) {
 
     return `
       <div style="background:#ffffff;border-radius:12px;padding:14px;margin-bottom:10px;border:1px solid #dde0e6;display:flex;align-items:center;gap:14px;">
-        <div style="width:48px;height:48px;background:#F8F5EE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${m.avatar}</div>
+        <div style="width:48px;height:48px;background:#f0ede5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">${m.avatar}</div>
         <div style="flex:1;min-width:0;">
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
             <span style="color:#fff;font-size:15px;font-weight:600;">${escapeHtml(m.name)}</span>
             <span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:600;background:${roleColor}20;color:${roleColor};border:1px solid ${roleColor}40;">${roleLabel}</span>
           </div>
-          ${isKitase ? '<div style="color:#f39c12;font-size:11px;margin-top:4px;">ガラケーのみ・操作しない</div>' : ''}
-          <div style="color:#5a6272;font-size:11px;margin-top:4px;">連絡先: 今後追加予定</div>
+          ${isKitase ? '<div style="color:#f39c12;font-size:12px;margin-top:4px;">ガラケーのみ・操作しない</div>' : ''}
+          <div style="color:#5a6272;font-size:12px;margin-top:4px;">連絡先: 今後追加予定</div>
         </div>
       </div>
     `;
@@ -661,7 +661,7 @@ function renderSettingsSection(container, staff, backBar) {
     <div style="background:#ffffff;border-radius:12px;padding:16px;margin-bottom:16px;border:1px solid #dde0e6;">
       <div style="color:#5a6272;font-size:12px;margin-bottom:8px;">ログイン中のユーザー</div>
       <div style="display:flex;align-items:center;gap:12px;">
-        <div style="width:48px;height:48px;background:#F8F5EE;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">${staff.avatar}</div>
+        <div style="width:48px;height:48px;background:#f0ede5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">${staff.avatar}</div>
         <div>
           <div style="color:#fff;font-size:16px;font-weight:600;">${escapeHtml(staff.name)}</div>
           <div style="color:#5a6272;font-size:12px;">${roleLabel}</div>

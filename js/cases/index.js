@@ -196,10 +196,10 @@ function renderCaseCard(c) {
         </div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <div style="font-size:11px;color:#5a6272;">
+        <div style="font-size:12px;color:#5a6272;">
           ${staffNames ? `👷 ${escapeHtml(staffNames)}` : '担当未定'}
         </div>
-        <div style="font-size:11px;color:#5a6272;">
+        <div style="font-size:12px;color:#5a6272;">
           ${c.work_orders.length > 0 ? `作業指示: ${c.work_orders.length}件` : ''}
         </div>
       </div>
@@ -250,8 +250,8 @@ async function showAcceptCaseModal() {
           <input type="checkbox" value="${c.id}" style="margin-top:2px;accent-color:#006B3F;">
           <div style="flex:1;min-width:0;">
             <div style="font-size:13px;font-weight:600;color:#ffffff;margin-bottom:2px;">${escapeHtml(c.title || '無題')}</div>
-            ${c.site_address ? `<div style="font-size:11px;color:#5a6272;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
-            ${c.description ? `<div style="font-size:11px;color:#5a6272;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.description)}</div>` : ''}
+            ${c.site_address ? `<div style="font-size:12px;color:#5a6272;">📍 ${escapeHtml(c.site_address)}</div>` : ''}
+            ${c.description ? `<div style="font-size:12px;color:#5a6272;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(c.description)}</div>` : ''}
           </div>
         </label>
       `).join('')}
@@ -431,7 +431,7 @@ function renderStatusChangeSection(latestOrder) {
           const icon = CONFIG.STATUS_ICONS[s] || '';
           return `
             <button class="status-change-btn" data-status="${s}" data-order-id="${latestOrder.id}"
-              style="padding:6px 10px;border-radius:6px;font-size:11px;font-weight:600;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;cursor:pointer;white-space:nowrap;">
+              style="padding:6px 10px;border-radius:6px;font-size:12px;font-weight:600;border:1px solid #dde0e6;background:#F8F5EE;color:#1C2541;cursor:pointer;white-space:nowrap;">
               ${icon} ${s}
             </button>
           `;
@@ -491,7 +491,7 @@ function renderWorkOrderCard(order) {
         ${staffNames ? `👷 ${escapeHtml(staffNames)}` : '担当未定'}
       </div>
       ${order.instructions ? `
-        <div style="font-size:11px;color:#5a6272;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+        <div style="font-size:12px;color:#5a6272;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
           📝 ${escapeHtml(order.instructions)}
         </div>
       ` : ''}
@@ -535,7 +535,7 @@ async function renderNewWorkOrder(container, params = {}) {
 
       <!-- 案件名表示 -->
       <div style="background:#ffffff;border:1px solid #dde0e6;border-radius:12px;padding:12px;margin-bottom:16px;">
-        <div style="font-size:11px;color:#5a6272;margin-bottom:4px;">対象案件</div>
+        <div style="font-size:12px;color:#5a6272;margin-bottom:4px;">対象案件</div>
         <div style="font-size:14px;color:#ffffff;font-weight:600;">${escapeHtml(caseTitle)}</div>
         ${subcategory ? `<div style="font-size:12px;color:#006B3F;margin-top:2px;">${escapeHtml(subcategory)}</div>` : ''}
       </div>
@@ -595,7 +595,7 @@ async function renderNewWorkOrder(container, params = {}) {
         <div style="margin-bottom:24px;">
           <label style="display:block;font-size:13px;font-weight:600;color:#1C2541;margin-bottom:8px;">
             チェックリスト
-            <span style="font-size:11px;color:#5a6272;font-weight:400;">（テンプレート: ${escapeHtml(templateKey)}）</span>
+            <span style="font-size:12px;color:#5a6272;font-weight:400;">（テンプレート: ${escapeHtml(templateKey)}）</span>
           </label>
           <div id="checklistItems">
             ${templateItems.map((item, i) => `

@@ -56,15 +56,15 @@ function setToolChecks(workOrderId, checks) {
 // =============================================
 const STYLES = {
   card: 'background:#ffffff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #dde0e6;',
-  btn: 'padding:10px 16px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;',
+  btn: 'padding:14px 20px;border-radius:10px;border:none;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.2s;',
   btnPrimary: 'background:#C5A258;color:#fff;',
   btnSecondary: 'background:#dde0e6;color:#5a6272;',
-  btnDanger: 'background:#c0392b;color:#fff;',
+  btnDanger: 'background:#CE2029;color:#fff;',
   btnSuccess: 'background:#006B3F;color:#fff;',
-  input: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #dde0e6;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;',
-  textarea: 'width:100%;padding:10px 12px;border-radius:8px;border:1px solid #dde0e6;background:#0d1b36;color:#fff;font-size:14px;box-sizing:border-box;outline:none;resize:vertical;min-height:80px;',
-  label: 'display:block;color:#5a6272;font-size:12px;margin-bottom:4px;',
-  sectionTitle: 'color:#fff;font-size:15px;font-weight:700;margin-bottom:12px;',
+  input: 'width:100%;padding:12px 14px;border-radius:10px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:15px;box-sizing:border-box;outline:none;',
+  textarea: 'width:100%;padding:12px 14px;border-radius:10px;border:1px solid #dde0e6;background:#ffffff;color:#1C2541;font-size:15px;box-sizing:border-box;outline:none;resize:vertical;min-height:80px;',
+  label: 'display:block;color:#5a6272;font-size:13px;margin-bottom:4px;',
+  sectionTitle: 'color:#1C2541;font-size:17px;font-weight:700;margin-bottom:12px;',
 };
 
 // =============================================
@@ -118,7 +118,7 @@ async function renderTodayField(container) {
   container.innerHTML = `
     <div style="padding:16px 16px 100px;">
       <div style="margin-bottom:20px;">
-        <h2 style="color:#fff;font-size:20px;font-weight:700;margin:0 0 4px;">今日の現場</h2>
+        <h2 style="color:#1C2541;font-size:22px;font-weight:700;margin:0 0 4px;">今日の現場</h2>
         <p style="color:#5a6272;font-size:13px;margin:0;">${dateStr}</p>
       </div>
       <div id="todayOrdersList"></div>
@@ -147,7 +147,7 @@ async function renderTodayField(container) {
       <div style="${STYLES.card}" data-order-id="${order.id}">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
           <div style="flex:1;min-width:0;">
-            <div style="color:#fff;font-size:15px;font-weight:700;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
+            <div style="color:#1C2541;font-size:15px;font-weight:700;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
             ${address ? `<div style="color:#5a6272;font-size:12px;margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">📍 ${escapeHtml(address)}</div>` : ''}
             ${timeStr ? `<div style="color:#5a6272;font-size:12px;">🕐 ${timeStr}〜</div>` : ''}
           </div>
@@ -220,19 +220,19 @@ async function renderFieldworkDashboard(container, workOrderId, activeTab = 'pho
       <!-- ヘッダー -->
       <div style="padding:12px 16px;background:#ffffff;border-bottom:1px solid #dde0e6;">
         <div style="display:flex;align-items:center;gap:8px;">
-          <button id="fwBackBtn" style="background:none;border:none;color:#C5A258;font-size:18px;cursor:pointer;padding:4px;">←</button>
+          <button id="fwBackBtn" style="background:none;border:none;color:#C5A258;font-size:24px;cursor:pointer;padding:12px;min-width:48px;min-height:48px;">←</button>
           <div style="flex:1;min-width:0;">
-            <div style="color:#fff;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
+            <div style="color:#1C2541;font-size:14px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(title)}</div>
             <div style="color:#5a6272;font-size:11px;">${statusBadge(workOrder.status)}</div>
           </div>
         </div>
       </div>
 
       <!-- タブバー -->
-      <div id="fwTabBar" style="display:flex;overflow-x:auto;background:#0d1b36;border-bottom:1px solid #dde0e6;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
+      <div id="fwTabBar" style="display:flex;overflow-x:auto;background:#F8F5EE;border-bottom:1px solid #dde0e6;-webkit-overflow-scrolling:touch;scrollbar-width:none;">
         ${TABS.map(tab => `
-          <button class="fw-tab" data-tab="${tab.key}" style="flex-shrink:0;padding:10px 14px;background:none;border:none;border-bottom:3px solid ${tab.key === activeTab ? '#C5A258' : 'transparent'};color:${tab.key === activeTab ? '#C5A258' : '#5a6272'};font-size:11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all 0.2s;min-width:60px;">
-            <span style="font-size:18px;">${tab.icon}</span>
+          <button class="fw-tab" data-tab="${tab.key}" style="flex-shrink:0;padding:10px 14px;background:none;border:none;border-bottom:3px solid ${tab.key === activeTab ? '#C5A258' : 'transparent'};color:${tab.key === activeTab ? '#C5A258' : '#5a6272'};font-size:13px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:all 0.2s;min-width:68px;padding:12px 14px;">
+            <span style="font-size:22px;">${tab.icon}</span>
             <span>${tab.label}</span>
           </button>
         `).join('')}
@@ -346,9 +346,9 @@ async function renderPhotos(contentEl, workOrder) {
           ${photos.length === 0
             ? `<div style="grid-column:1/-1;text-align:center;padding:40px;color:#5a6272;font-size:13px;">まだ写真がありません</div>`
             : photos.map(p => `
-              <div style="position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#0d1b36;">
+              <div style="position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#f0ede5;">
                 <img src="${escapeHtml(p.photo_url)}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
-                ${p.caption ? `<div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);color:#fff;font-size:10px;padding:4px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(p.caption)}</div>` : ''}
+                ${p.caption ? `<div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);color:#1C2541;font-size:10px;padding:4px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(p.caption)}</div>` : ''}
               </div>
             `).join('')}
         </div>
@@ -461,7 +461,7 @@ async function renderChecklist(contentEl, workOrder, askCase) {
             <span style="color:#5a6272;font-size:12px;">進捗</span>
             <span style="color:#C5A258;font-size:14px;font-weight:700;">${checkedCount}/${total}（${percent}%）</span>
           </div>
-          <div style="height:8px;background:#0d1b36;border-radius:4px;overflow:hidden;">
+          <div style="height:8px;background:#F8F5EE;border-radius:4px;overflow:hidden;">
             <div style="height:100%;width:${percent}%;background:linear-gradient(90deg,#C5A258,#C5A258);border-radius:4px;transition:width 0.3s;"></div>
           </div>
         </div>
@@ -471,7 +471,7 @@ async function renderChecklist(contentEl, workOrder, askCase) {
           ${items.map((item, idx) => `
             <div class="checklist-item" data-idx="${idx}" style="${STYLES.card}display:flex;align-items:center;gap:12px;cursor:pointer;padding:14px 16px;${item.checked ? 'opacity:0.6;' : ''}">
               <div style="width:24px;height:24px;border-radius:6px;border:2px solid ${item.checked ? '#006B3F' : '#dde0e6'};background:${item.checked ? '#006B3F' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
-                ${item.checked ? '<span style="color:#fff;font-size:14px;">✓</span>' : ''}
+                ${item.checked ? '<span style="color:#1C2541;font-size:14px;">✓</span>' : ''}
               </div>
               <span style="color:${item.checked ? '#5a6272' : '#fff'};font-size:14px;${item.checked ? 'text-decoration:line-through;' : ''}">${escapeHtml(item.label)}</span>
             </div>
@@ -563,7 +563,7 @@ async function renderTimer(contentEl, workOrder) {
               <div style="display:flex;justify-content:space-between;align-items:center;">
                 <div>
                   <div style="color:#5a6272;font-size:11px;">${escapeHtml(getStaffById(log.staff_id)?.name || log.staff_id || '--')}</div>
-                  <div style="color:#fff;font-size:13px;">${formatTime(log.start_time)} 〜 ${log.end_time ? formatTime(log.end_time) : '計測中'}</div>
+                  <div style="color:#1C2541;font-size:13px;">${formatTime(log.start_time)} 〜 ${log.end_time ? formatTime(log.end_time) : '計測中'}</div>
                 </div>
                 <div style="color:#C5A258;font-size:14px;font-weight:700;">${log.duration_minutes ? formatDuration(log.duration_minutes) : '--'}</div>
               </div>
@@ -731,9 +731,9 @@ async function renderFoundItems(contentEl, workOrder) {
               <div style="${STYLES.card}display:flex;gap:12px;align-items:flex-start;">
                 ${item.photo_url
                   ? `<img src="${escapeHtml(item.photo_url)}" style="width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;">`
-                  : `<div style="width:64px;height:64px;border-radius:8px;background:#0d1b36;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#5a6272;font-size:24px;">📦</div>`}
+                  : `<div style="width:64px;height:64px;border-radius:8px;background:#f0ede5;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#5a6272;font-size:24px;">📦</div>`}
                 <div style="flex:1;min-width:0;">
-                  <div style="color:#fff;font-size:14px;font-weight:600;margin-bottom:2px;">${escapeHtml(item.item_name)}</div>
+                  <div style="color:#1C2541;font-size:14px;font-weight:600;margin-bottom:2px;">${escapeHtml(item.item_name)}</div>
                   <div style="color:#5a6272;font-size:12px;">${escapeHtml(item.category || '--')}</div>
                   ${item.estimated_value ? `<div style="color:#C5A258;font-size:13px;font-weight:600;">¥${Number(item.estimated_value).toLocaleString()}</div>` : ''}
                   ${item.note ? `<div style="color:#5a6272;font-size:11px;margin-top:2px;">${escapeHtml(item.note)}</div>` : ''}
@@ -847,7 +847,7 @@ async function renderMemos(contentEl, workOrder) {
                   <span style="color:#5a6272;font-size:11px;">${escapeHtml(getStaffById(memo.created_by)?.name || memo.created_by || '--')}</span>
                   <span style="color:#5a6272;font-size:11px;">${formatTime(memo.created_at)}</span>
                 </div>
-                <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(memo.content)}</div>
+                <div style="color:#1C2541;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(memo.content)}</div>
                 ${memo.photo_url ? `<img src="${escapeHtml(memo.photo_url)}" style="max-width:100%;border-radius:8px;margin-top:8px;max-height:200px;object-fit:cover;">` : ''}
               </div>
             `).join('')}
@@ -935,7 +935,7 @@ function renderTools(contentEl, workOrder) {
             return `
               <div class="tool-item" data-idx="${idx}" style="${STYLES.card}display:flex;align-items:center;gap:12px;cursor:pointer;padding:14px 16px;${isChecked ? 'opacity:0.7;' : ''}">
                 <div style="width:28px;height:28px;border-radius:8px;border:2px solid ${isChecked ? '#006B3F' : '#dde0e6'};background:${isChecked ? '#006B3F' : 'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;">
-                  ${isChecked ? '<span style="color:#fff;font-size:16px;">✓</span>' : ''}
+                  ${isChecked ? '<span style="color:#1C2541;font-size:16px;">✓</span>' : ''}
                 </div>
                 <span style="color:${isChecked ? '#5a6272' : '#fff'};font-size:14px;">${escapeHtml(tool)}</span>
                 ${isChecked ? '<span style="color:#006B3F;font-size:11px;margin-left:auto;">持った</span>' : ''}
@@ -974,7 +974,7 @@ function renderRoles(contentEl, workOrder) {
       ${instructions ? `
         <div style="${STYLES.card}margin-bottom:16px;">
           <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">作業指示</div>
-          <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(instructions)}</div>
+          <div style="color:#1C2541;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(instructions)}</div>
         </div>
       ` : ''}
 
@@ -986,9 +986,9 @@ function renderRoles(contentEl, workOrder) {
             if (!s) return '';
             return `
               <div style="${STYLES.card}display:flex;align-items:center;gap:12px;">
-                <div style="width:44px;height:44px;border-radius:50%;background:#0d1b36;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${s.avatar}</div>
+                <div style="width:44px;height:44px;border-radius:50%;background:#f0ede5;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">${s.avatar}</div>
                 <div style="flex:1;">
-                  <div style="color:#fff;font-size:14px;font-weight:600;">${escapeHtml(s.name)}</div>
+                  <div style="color:#1C2541;font-size:14px;font-weight:600;">${escapeHtml(s.name)}</div>
                   <div style="color:#5a6272;font-size:12px;">${s.role === 'admin' ? '管理者' : s.role === 'display_only' ? '表示のみ' : '作業員'}</div>
                 </div>
               </div>
@@ -1060,7 +1060,7 @@ function renderMap(contentEl, workOrder, askCase) {
 
       <div style="${STYLES.card}">
         <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">現場住所</div>
-        <div style="color:#fff;font-size:15px;font-weight:600;margin-bottom:16px;">
+        <div style="color:#1C2541;font-size:15px;font-weight:600;margin-bottom:16px;">
           ${address ? escapeHtml(address) : '<span style="color:#5a6272;">住所が未設定です</span>'}
         </div>
 
@@ -1119,11 +1119,11 @@ async function renderCompletion(contentEl, workOrder, askCase) {
 
         <div style="${STYLES.card}">
           <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">報告日時</div>
-          <div style="color:#fff;font-size:14px;margin-bottom:12px;">${formatDateFull(existingReport.created_at)} ${formatTime(existingReport.created_at)}</div>
+          <div style="color:#1C2541;font-size:14px;margin-bottom:12px;">${formatDateFull(existingReport.created_at)} ${formatTime(existingReport.created_at)}</div>
 
           ${existingReport.comment ? `
             <div style="color:#5a6272;font-size:11px;margin-bottom:4px;">コメント</div>
-            <div style="color:#fff;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(existingReport.comment)}</div>
+            <div style="color:#1C2541;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(existingReport.comment)}</div>
           ` : ''}
 
           ${existingReport.photo_urls && existingReport.photo_urls.length > 0 ? `
@@ -1161,7 +1161,7 @@ async function renderCompletion(contentEl, workOrder, askCase) {
             ${completionPhotos.map((p, idx) => `
               <div style="position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;">
                 <img src="${p.preview}" style="width:100%;height:100%;object-fit:cover;">
-                <button class="remove-photo-btn" data-idx="${idx}" style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.7);color:#fff;border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+                <button class="remove-photo-btn" data-idx="${idx}" style="position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,0.7);color:#1C2541;border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
               </div>
             `).join('')}
           </div>

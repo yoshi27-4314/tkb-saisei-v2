@@ -73,7 +73,7 @@ export function renderTools(container, params = {}) {
     card.innerHTML = `
       <div style="font-size:28px;margin-bottom:6px;">${g.icon}</div>
       <div style="color:#1C2541;font-size:14px;font-weight:600;">${g.label}</div>
-      <div style="color:${C.sub};font-size:11px;margin-top:2px;">${g.desc}</div>
+      <div style="color:${C.sub};font-size:12px;margin-top:2px;">${g.desc}</div>
     `;
     card.addEventListener('click', () => renderTools(container, { page: g.key }));
     guidesEl.appendChild(card);
@@ -93,7 +93,7 @@ export function renderTools(container, params = {}) {
       <div style="font-size:24px;flex-shrink:0;">${u.icon}</div>
       <div>
         <div style="color:#1C2541;font-size:14px;font-weight:600;">${u.label}</div>
-        <div style="color:${C.sub};font-size:11px;margin-top:1px;">${u.desc}</div>
+        <div style="color:${C.sub};font-size:12px;margin-top:1px;">${u.desc}</div>
       </div>
       <div style="margin-left:auto;color:${C.sub};font-size:16px;">›</div>
     `;
@@ -112,7 +112,7 @@ export function renderTools(container, params = {}) {
       <div style="font-size:24px;flex-shrink:0;">📄</div>
       <div>
         <div style="color:#1C2541;font-size:14px;font-weight:600;">報告書作成</div>
-        <div style="color:${C.sub};font-size:11px;margin-top:1px;">作業報告書PDF生成</div>
+        <div style="color:${C.sub};font-size:12px;margin-top:1px;">作業報告書PDF生成</div>
       </div>
       <div style="margin-left:auto;color:${C.sub};font-size:16px;">›</div>
     `;
@@ -153,7 +153,7 @@ function renderGuideSafety(container) {
         <!-- 熱中症対策 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">☀️ 熱中症対策</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>作業前に必ず500ml以上の水分を確保する</li>
             <li>30分に1回は水分補給。のどが渇く前に飲む</li>
             <li>めまい・吐き気を感じたらすぐ日陰で休む</li>
@@ -167,7 +167,7 @@ function renderGuideSafety(container) {
         <!-- 重量物の持ち方 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">💪 重量物の持ち方</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>膝を曲げて腰を落とし、背中はまっすぐ</li>
             <li>荷物はできるだけ体に近づけて持つ</li>
             <li>ひねり動作は禁止。体ごと方向を変える</li>
@@ -182,7 +182,7 @@ function renderGuideSafety(container) {
         <!-- 高所作業 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">🪜 高所作業</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>脚立は必ず開き止めをロックしてから使う</li>
             <li>脚立の天板には絶対に乗らない</li>
             <li>2m以上の高さで作業する場合はヘルメット必須</li>
@@ -195,7 +195,7 @@ function renderGuideSafety(container) {
         <!-- 車両安全 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">🚛 車両・運転</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>出発前に積荷の固定を確認（ロープ・ラッシング）</li>
             <li>住宅街では最徐行。子どもの飛び出しに注意</li>
             <li>バック時は必ず降りて後方確認。誘導者をつける</li>
@@ -207,7 +207,7 @@ function renderGuideSafety(container) {
         <!-- 緊急連絡先 -->
         <div style="background:${C.card};border:1px solid #e74c3c40;border-radius:12px;padding:16px;">
           <div style="color:#e74c3c;font-size:15px;font-weight:700;margin-bottom:10px;">🚨 緊急時の対応</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>怪我：応急処置 → 浅野に電話 → 必要なら119</li>
             <li>事故：安全確保 → 110/119 → 浅野に電話</li>
             <li>物損：写真を撮る → 浅野に電話 → お客さんに説明</li>
@@ -235,7 +235,7 @@ function renderGuideCustomer(container) {
         <!-- 挨拶 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">👋 挨拶・第一印象</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>到着したら「テイクバックの○○です。本日はよろしくお願いいたします」</li>
             <li>帰る時は「本日はありがとうございました。何かあればいつでもご連絡ください」</li>
             <li>近隣の方には「ご迷惑をおかけします。○時頃に終わる予定です」</li>
@@ -246,7 +246,7 @@ function renderGuideCustomer(container) {
         <!-- 服装 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">👔 服装・身だしなみ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>テイクバックのポロシャツまたはジャンパーを着る</li>
             <li>清潔感が一番大事。汚れたらすぐ着替える</li>
             <li>作業着でもだらしなく見えないよう注意</li>
@@ -258,7 +258,7 @@ function renderGuideCustomer(container) {
         <!-- 言葉遣い -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">💬 言葉遣い</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>敬語が基本。「です・ます」を使う</li>
             <li>「ゴミ」は使わない →「不用品」「お荷物」</li>
             <li>「捨てる」は使わない →「処分する」「お引き取りする」</li>
@@ -270,7 +270,7 @@ function renderGuideCustomer(container) {
         <!-- クレーム対応 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">⚡ クレーム対応</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>まず謝る。「申し訳ございません」</li>
             <li>言い訳しない。理由の説明は後でいい</li>
             <li>お客さんの話を最後まで聞く。途中で遮らない</li>
@@ -283,7 +283,7 @@ function renderGuideCustomer(container) {
         <!-- 遺品整理の心得 -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">🙏 遺品整理の心得</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>故人の品物を雑に扱わない</li>
             <li>お客さんが泣いていたら、そっと待つ</li>
             <li>思い出の品は丁寧にまとめて最後にお客さんに確認</li>
@@ -316,10 +316,10 @@ function renderGuideSorting(container) {
         <!-- 可燃ごみ -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#e74c3c;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">燃</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#e74c3c;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:14px;font-weight:bold;">燃</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">可燃ごみ</span>
           </div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>生ごみ（水をよく切る）</li>
             <li>紙くず・布・革製品</li>
             <li>プラスチック製品（汚れたもの）</li>
@@ -332,10 +332,10 @@ function renderGuideSorting(container) {
         <!-- 不燃ごみ -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#3498db;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">不</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#3498db;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:14px;font-weight:bold;">不</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">不燃ごみ</span>
           </div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>ガラス・陶器・鏡</li>
             <li>金属類（鍋・フライパン等）</li>
             <li>小型家電（ドライヤー・アイロン等）</li>
@@ -348,10 +348,10 @@ function renderGuideSorting(container) {
         <!-- 粗大ごみ -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#9b59b6;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">粗</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#9b59b6;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:14px;font-weight:bold;">粗</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">粗大ごみ</span>
           </div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>指定袋に入らない大きさのもの</li>
             <li>家具（タンス・机・椅子・ソファ等）</li>
             <li>布団・マットレス</li>
@@ -363,10 +363,10 @@ function renderGuideSorting(container) {
         <!-- 家電リサイクル -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#C5A258;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">家</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#C5A258;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:14px;font-weight:bold;">家</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">家電リサイクル法対象</span>
           </div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li><strong>テレビ</strong>（ブラウン管・液晶・プラズマ）</li>
             <li><strong>エアコン</strong></li>
             <li><strong>冷蔵庫・冷凍庫</strong></li>
@@ -380,10 +380,10 @@ function renderGuideSorting(container) {
         <!-- 資源ごみ -->
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-            <span style="display:inline-block;width:28px;height:28px;background:#27ae60;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:13px;font-weight:bold;">資</span>
+            <span style="display:inline-block;width:28px;height:28px;background:#27ae60;border-radius:6px;text-align:center;line-height:28px;color:#fff;font-size:14px;font-weight:bold;">資</span>
             <span style="color:${C.accent};font-size:15px;font-weight:700;">資源ごみ</span>
           </div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>新聞・雑誌・段ボール（ひもで縛る）</li>
             <li>ペットボトル（キャップとラベルを外す）</li>
             <li>缶（アルミ・スチール）</li>
@@ -395,7 +395,7 @@ function renderGuideSorting(container) {
         <!-- 処分できないもの -->
         <div style="background:${C.card};border:1px solid #e74c3c40;border-radius:12px;padding:16px;">
           <div style="color:#e74c3c;font-size:15px;font-weight:700;margin-bottom:10px;">🚫 処分できないもの</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>タイヤ・バッテリー → カー用品店へ</li>
             <li>消火器 → 専門業者へ</li>
             <li>塗料・シンナー → 産業廃棄物業者へ</li>
@@ -424,7 +424,7 @@ function renderGuideApp(container) {
 
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">📋 案件タブ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>アスカラから受け取った案件の一覧が表示されます</li>
             <li>案件をタップすると詳細（住所・作業内容・チェックリスト）が見れます</li>
             <li>ステータスは作業の進み具合に合わせて変更してください</li>
@@ -433,7 +433,7 @@ function renderGuideApp(container) {
 
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">🏗️ 今日の現場タブ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>今日作業予定の案件だけが表示されます</li>
             <li>チェックリストで作業漏れを防ぎます</li>
             <li>写真撮影：作業前・作業後の写真を撮ってください</li>
@@ -443,7 +443,7 @@ function renderGuideApp(container) {
 
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">💰 経費タブ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>作業で使ったお金を記録します</li>
             <li>レシートの写真を撮ると自動で金額を読み取ります（OCR）</li>
             <li>カテゴリを選んで保存してください</li>
@@ -452,7 +452,7 @@ function renderGuideApp(container) {
 
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">🛠️ ツールタブ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>このページです。各種ガイドや住所録があります</li>
             <li>困ったときはここを見てください</li>
           </ul>
@@ -460,7 +460,7 @@ function renderGuideApp(container) {
 
         <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
           <div style="color:${C.accent};font-size:15px;font-weight:700;margin-bottom:10px;">👤 マイページタブ</div>
-          <ul style="color:${C.text};font-size:13px;line-height:1.8;padding-left:18px;margin:0;">
+          <ul style="color:${C.text};font-size:14px;line-height:1.8;padding-left:18px;margin:0;">
             <li>自分の作業実績が見れます</li>
             <li>ログアウトもここからできます</li>
           </ul>
@@ -543,16 +543,16 @@ function renderAddresses(container) {
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
         <div>
           <div style="color:#1C2541;font-size:14px;font-weight:600;">${escapeHtml(entry.name)}</div>
-          <div style="color:${C.sub};font-size:11px;margin-top:2px;">${escapeHtml(entry.desc)}</div>
+          <div style="color:${C.sub};font-size:12px;margin-top:2px;">${escapeHtml(entry.desc)}</div>
         </div>
         <a href="${mapsUrl}" target="_blank" rel="noopener"
-           style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;background:${C.accent};color:#1C2541;border:none;border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;box-shadow:0 2px 8px rgba(230,126,34,0.3);">
+           style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;background:${C.accent};color:#1C2541;border:none;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;box-shadow:0 2px 8px rgba(230,126,34,0.3);">
           📍 ナビ
         </a>
       </div>
       <div style="font-size:12px;color:${C.text};margin-bottom:4px;">📍 ${escapeHtml(entry.address)}</div>
       ${entry.phone !== '--' ? `<div style="font-size:12px;color:${C.text};margin-bottom:4px;">📞 <a href="tel:${entry.phone}" style="color:${C.accent};text-decoration:none;">${escapeHtml(entry.phone)}</a></div>` : ''}
-      ${entry.hours !== '--' ? `<div style="font-size:11px;color:${C.sub};">🕐 ${escapeHtml(entry.hours)}</div>` : ''}
+      ${entry.hours !== '--' ? `<div style="font-size:12px;color:${C.sub};">🕐 ${escapeHtml(entry.hours)}</div>` : ''}
     `;
     list.appendChild(card);
   });
@@ -577,7 +577,7 @@ function renderAiConsult(container) {
       </div>
 
       <div id="aiResponse" style="display:none;background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:16px;">
-        <div style="color:${C.sub};font-size:11px;margin-bottom:8px;">AIの回答</div>
+        <div style="color:${C.sub};font-size:12px;margin-bottom:8px;">AIの回答</div>
         <div id="aiResponseText" style="color:${C.text};font-size:14px;line-height:1.7;"></div>
       </div>
     </div>
@@ -620,7 +620,7 @@ function renderReport(container) {
       <div style="background:${C.card};border:1px solid ${C.border};border-radius:12px;padding:24px;text-align:center;">
         <div style="font-size:48px;margin-bottom:12px;">📄</div>
         <div style="color:#1C2541;font-size:16px;font-weight:600;margin-bottom:8px;">報告書作成</div>
-        <div style="color:${C.sub};font-size:13px;line-height:1.6;">
+        <div style="color:${C.sub};font-size:14px;line-height:1.6;">
           作業報告書のPDF生成機能は今後追加予定です。<br>
           案件の作業記録・写真・経費をまとめて<br>
           お客さま向け報告書を自動生成します。
