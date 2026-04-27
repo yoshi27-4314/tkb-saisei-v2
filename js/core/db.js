@@ -7,6 +7,12 @@ import { CONFIG } from './config.js';
 let db = null;
 let listeners = new Set();
 
+// ローカル日付（UTC問題回避）
+function todayLocal() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 // --- 初期化 ---
 export function initDB() {
   if (!window.supabase) {
@@ -399,7 +405,7 @@ export async function getWorkOrderStatusCounts() {
 }
 
 export async function getTodayWorkOrders(staffId = null) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = todayLocal();
   const filters = {
     work_date: today,
     status: ['受注確定', '現場作業中'],

@@ -6,7 +6,7 @@ import { CONFIG } from './core/config.js';
 import { initDB, getTodayWorkOrders, getWorkOrderStatusCounts, getNotices, getAttendanceByDate, getAskCase } from './core/db.js';
 import { getCurrentStaff, showLoginScreen, logout, isAdmin, getAllStaff } from './core/auth.js';
 import { registerRoute, navigate } from './core/router.js';
-import { showToast, showLoading, statusBadge, emptyState, escapeHtml, formatDate } from './core/ui.js';
+import { showToast, showLoading, statusBadge, emptyState, escapeHtml, formatDate, todayLocal } from './core/ui.js';
 import { renderCases } from './cases/index.js';
 import { renderFieldwork } from './fieldwork/index.js';
 import { renderTools } from './tools/index.js';
@@ -105,7 +105,7 @@ async function renderHome() {
   try {
     const staff = getCurrentStaff();
     const today = new Date();
-    const todayStr = today.toISOString().split('T')[0];
+    const todayStr = todayLocal();
     const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
     const hour = today.getHours();
     const greeting = hour < 12 ? 'おはようございます' : hour < 18 ? 'こんにちは' : 'お疲れさまです';

@@ -523,7 +523,7 @@ async function renderNewWorkOrder(container, params = {}) {
   const templateItems = CONFIG.CHECKLIST_TEMPLATES[templateKey] || CONFIG.CHECKLIST_TEMPLATES['デフォルト'];
 
   const allStaff = getAllStaff();
-  const today = new Date().toISOString().split('T')[0];
+  const today = (() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; })();
 
   container.innerHTML = `
     <div style="padding:16px 16px 100px;">

@@ -194,6 +194,17 @@ export function resizeImage(base64, maxWidth = 1200) {
   });
 }
 
+// --- ローカル日付（JST）---
+export function todayLocal() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+export function dateLocalStr(date) {
+  const d = date || new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 // --- スワイプで戻るジェスチャー ---
 export function enableSwipeBack(element, onSwipeRight) {
   let startX = 0;
